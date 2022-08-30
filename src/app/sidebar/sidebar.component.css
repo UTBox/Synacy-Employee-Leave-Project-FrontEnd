@@ -1,0 +1,90 @@
+
+.sidebar-container {
+  position: absolute;
+  width: 417px;
+  height: 1018px;
+  left: 0px;
+  top: 0px;
+  background: #17242A;
+}
+.align-first{
+  margin-top: 52px;
+}
+
+label {
+  color: white;
+  margin-left: 28px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  color: white;
+}
+
+ul {
+  color: white;
+  list-style: none;
+  font-family: 'Inter', sans-serif;
+}
+
+ul li {
+  margin-top: 7px;
+  font-family: Inter;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+
+}
+
+ul a {
+  text-decoration: none;
+  color: white;
+}
+
+.option-container {
+  margin-top: 65px;
+  margin-left: 28px;
+}
+
+input {
+  margin-left: 28px;
+  width: 358px;
+  height: 25px;
+
+}
+select{
+  margin-left: 28px;
+  width: 358px;
+  height: 35px;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
