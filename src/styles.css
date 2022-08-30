@@ -1,3 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
 
 /* You can add global styles to this file, and also import other style files */
+.global_initial_container{
+  display: block;
+  margin-left: 440px;
+  margin-top: 52px;
+  background: #2B7A77;
+  width: 1440px;
+  height: 82px;
+}
+.global_initial_container h1{
+  margin: auto;
+  padding: 20px;
+  color: white;
+  vertical-align: center;
+}
+
+.global_secondary_container{
+  margin-left: 440px;
+  margin-top: 20px;
+}
