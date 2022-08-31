@@ -1,3 +1,4 @@
+
 .global_initial_container button {
   width: 151px;
   height: 44px;
@@ -9,6 +10,17 @@
   font-size: 20px;
   float: right;
   margin-right: 30px;
+}
+
+label {
+  display: inline-block;
+  margin-left: 33px;
+  margin-top: 50px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
 }
 
 
