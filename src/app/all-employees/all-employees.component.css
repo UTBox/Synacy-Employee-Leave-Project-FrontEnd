@@ -35,7 +35,7 @@ thead th:nth-child(6) {
   width: 15%;
 }
 
-table th{
+table th {
   padding: 5px;
   border: 1px solid black;
   font-family: 'Inter', sans-serif;
@@ -49,3 +49,14 @@ table td {
   padding: 5px;
   border: 1px solid black;
 }
+
+button {
+  margin-left: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  width: 136px;
+
+}
+

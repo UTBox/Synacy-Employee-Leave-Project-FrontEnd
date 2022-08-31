@@ -1,8 +1,7 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
 
 /* You can add global styles to this file, and also import other style files */
-.global_initial_container{
+.global_initial_container {
   display: block;
   margin-left: 420px;
   margin-top: 52px;
@@ -10,20 +9,38 @@
   width: 1440px;
   height: 82px;
 }
-.global_initial_container h1{
+
+.global_initial_container h1 {
   margin: auto;
   padding: 20px;
   color: white;
   vertical-align: center;
 }
 
-.global_secondary_container{
+.global_secondary_container {
   margin-left: 420px;
   margin-top: 20px;
 }
-h1{
+
+h1 {
   font-family: 'Arial';
   font-style: normal;
   font-weight: bolder;
   font-size: 32px;
+}
+
+.input_class {
+  position: relative;
+  width: 358px;
+  height: 29px;
+}
+
+.select_class {
+  position: relative;
+  width: 365px;
+  height: 34px;
+}
+.light_blueGreen_shade {
+  background: #3AAFA9;
+  color: white;
 }
