@@ -7,7 +7,8 @@
   top: 0px;
   background: #17242A;
 }
-.align-first{
+
+.align-first {
   margin-top: 52px;
 }
 
@@ -59,7 +60,8 @@ input {
   height: 25px;
 
 }
-select{
+
+select {
   margin-left: 28px;
   width: 335px;
   height: 35px;
@@ -87,4 +89,25 @@ select{
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.fa fa-home {
+  width: 50px;
+  height: 50px;
+
+}
+
+.icon_container {
+  padding: 5px;
+  background: #245167;
+  width: 30px;
+  height: 30px;
+  margin-left: 28px;
+  margin-top: 28px;
+}
+button{
+
+  background: #17242A;
+  width: 50px;
+  height: 50px;
 }

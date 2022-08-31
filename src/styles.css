@@ -44,3 +44,11 @@ h1 {
   background: #3AAFA9;
   color: white;
 }
+input{
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+select{
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}

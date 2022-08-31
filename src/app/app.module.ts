@@ -7,11 +7,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {AddEmployeeModule} from "./add-employee/add-employee.module";
 import {AllEmployeesModule} from "./all-employees/all-employees.module";
 import {AllLeaveRoutingModule} from "./all-leave/all-leave-routing.module";
+import { HomepageComponent } from './homepage/homepage.component';
+import {HomepageRoutingModule} from "./homepage/homepage-routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
+
 
 
   ],
@@ -20,7 +23,8 @@ import {AllLeaveRoutingModule} from "./all-leave/all-leave-routing.module";
     AppRoutingModule,
     AddEmployeeModule,
     AllEmployeesModule,
-    AllLeaveRoutingModule
+    AllLeaveRoutingModule,
+    HomepageRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
