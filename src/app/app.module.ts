@@ -6,18 +6,21 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {AddEmployeeModule} from "./add-employee/add-employee.module";
 import {AllEmployeesModule} from "./all-employees/all-employees.module";
+import {AllLeaveRoutingModule} from "./all-leave/all-leave-routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AddEmployeeModule,
-    AllEmployeesModule
+    AllEmployeesModule,
+    AllLeaveRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

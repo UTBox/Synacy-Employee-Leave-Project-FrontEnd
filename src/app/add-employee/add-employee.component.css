@@ -1,9 +1,9 @@
 .global_initial_container button {
   width: 151px;
   height: 44px;
-  background: white;
+  background: #DEF2F1;
   color: black;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;

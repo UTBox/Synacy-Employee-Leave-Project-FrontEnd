@@ -2,7 +2,7 @@ table {
   width: 1440px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
 
   table-layout: fixed;
 
@@ -35,7 +35,7 @@ thead th:nth-child(6) {
   width: 15%;
 }
 
-table th{
+table th {
   padding: 5px;
   border: 1px solid black;
   font-family: 'Arial', sans-serif;
@@ -48,4 +48,24 @@ table th{
 table td {
   padding: 5px;
   border: 1px solid black;
+}
+
+button {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 20px;
+  font-size: 16px;
+  width: 80px;
+  height: 30px;
+}
+
+.approve {
+  background: #7D7B7B;
+  color: white;
+}
+
+.reject {
+  background: white;
+  color: black;
 }
