@@ -11,17 +11,14 @@
   <div class="align-first">
     <label>Select User:</label><br>
     <!-- insert select tage here-->
-    <select name="userSelector" id="user_selector">
-      <option value="Dexter Sy">Dexter Sy</option>
-      <option value="Mark B">Mark B</option>
-      <option value="Vergil O.">Vergil O.</option>
-
+    <select [(ngModel)]="selectedEmployeeId" (ngModelChange)="onEmployeeSelected()">
+      <option *ngFor="let employee of employeeList" [value]="employee.id">{{employee.name}}&nbsp;&nbsp;&nbsp;&nbsp;({{employee.role}})</option>
     </select>
 
     <br>
     <br>
-    <label>Role:</label><br>
-    <input type="text" readonly>
+    <!--    <label>Role:</label><br>-->
+    <!--    <input type="text" readonly>-->
   </div>
 
   <div class="option-container">
