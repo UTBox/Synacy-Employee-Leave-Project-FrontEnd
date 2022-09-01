@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SidebarService} from "./sidebar.service";
 import {Employee} from "../classes-and-objects/employee";
+import {SharedService} from "../shared.service";
+import {Subscribable, Subscriber, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,25 +11,20 @@ import {Employee} from "../classes-and-objects/employee";
 })
 export class SidebarComponent implements OnInit {
 
-  // public employeeData: Employee;
-
   public employeeList;
   public loading;
   public hasError;
 
   selectedEmployeeId: number = 1;
 
+  subscription: Subscription;
 
-  constructor(private sidebar_service: SidebarService) {
+  constructor(private sidebar_service: SidebarService, private shared_service: SharedService) {
   }
 
   ngOnInit(): void {
-    //< --- these code implementation is just created for mocking interaction in the front end.
-    // this.sidebar_service.addPredefinedEmployees();
-    // this.sidebar_service.employee.forEach(it => console.log(it));
-    // < --- >
     this.getEmployeesData();
-
+    this.subscription = this.shared_service.employeeName.subscribe(it => console.log(it));
 
   }
 
@@ -50,18 +47,10 @@ export class SidebarComponent implements OnInit {
     this.setChosenEmployeeData(this.selectedEmployeeId);
   }
 
-  setChosenEmployeeData(id: number) {
-    this.employeeList.forEach(function (value) {
-      if (value.id == id) {
-        console.log(value);
-        this.sidebar_service.employeeId = value.id;
-        this.sidebar_service.employeeName = value.name;
-        this.sidebar_service.employeeManager = value.manager;
-        this.sidebar_service.employeeRole = value.role;
-        this.sidebar_service.employeeLeave = value.leave_balance;
 
-      }
-    })
+  setChosenEmployeeData(id: number) {
+      let result = this.employeeList.filter((it) => (it.id == id));
+      this.shared_service.changeEmployeeName(result.name);
   }
 
 }
