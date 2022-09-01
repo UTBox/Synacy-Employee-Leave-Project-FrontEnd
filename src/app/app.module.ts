@@ -10,14 +10,19 @@ import {AllLeaveRoutingModule} from "./all-leave/all-leave-routing.module";
 import {HomepageRoutingModule} from "./homepage/homepage-routing.module";
 import {ApplyLeaveRoutingModule} from "./apply-leave/apply-leave-routing.module";
 import {MyLeaveRoutingModule} from "./my-leave/my-leave-routing.module";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
+
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     AddEmployeeModule,
@@ -25,7 +30,8 @@ import {MyLeaveRoutingModule} from "./my-leave/my-leave-routing.module";
     AllLeaveRoutingModule,
     HomepageRoutingModule,
     ApplyLeaveRoutingModule,
-    MyLeaveRoutingModule
+    MyLeaveRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
