@@ -1,3 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
 
 /* You can add global styles to this file, and also import other style files */
+.global_initial_container {
+  display: block;
+  margin-left: 420px;
+  margin-top: 52px;
+  background: #2B7A77;
+  width: 1440px;
+  height: 82px;
+}
+
+.global_initial_container h1 {
+  margin: auto;
+  padding: 20px;
+  color: white;
+  vertical-align: center;
+}
+
+.global_secondary_container {
+  margin-left: 420px;
+  margin-top: 20px;
+}
+
+h1 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.input_class {
+  position: relative;
+  width: 358px;
+  height: 29px;
+}
+
+.select_class {
+  position: relative;
+  width: 365px;
+  height: 34px;
+}
+
+.light_blueGreen_shade {
+  background: #3AAFA9;
+  color: white;
+}
+
+input {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+select {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+input[type=text]:focus {
+  background-color: rgb(246, 245, 245);
+}
+
+input[type=date]:focus {
+  background-color: rgb(246, 245, 245);
+}
+
+input[type=number]:focus {
+  background-color: rgb(246, 245, 245);
+}
+.dark_shade_gray {
+  background: #7D7B7B;
+  color: white;
+}
+

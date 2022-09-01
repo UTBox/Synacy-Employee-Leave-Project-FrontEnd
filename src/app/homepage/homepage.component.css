@@ -1,0 +1,73 @@
+.global_initial_container {
+  background: #ffffff;
+
+  border: 1px solid;
+}
+
+h1 {
+  color: black;
+}
+
+.admin_container {
+  height: 80px;
+  width: 1440px;
+  left: 453px;
+  background: #2B7A77;
+}
+
+.manager-container {
+  height: 80px;
+  width: 1440px;
+  left: 453px;
+  background: #2B7A77;
+}
+
+.employee-container {
+  height: 80px;
+  width: 1440px;
+  left: 453px;
+  background: #2B7A77;
+}
+
+h3 {
+  padding-top: 23px;
+  margin-left: 28px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.welcome_container {
+  width: 180px;
+  height: 80px;
+
+
+  background: #17242A;
+}
+
+h4 {
+  position: absolute;
+  width: 1177px;
+  height: 48px;
+  left: 640px;
+  top: 130px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #FFFFFF;
+}
+
+h5 {
+  margin-left: 35px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #000000;
+}
+

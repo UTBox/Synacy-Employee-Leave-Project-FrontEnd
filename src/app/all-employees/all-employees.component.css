@@ -1,0 +1,62 @@
+table {
+  width: 1440px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+
+  table-layout: fixed;
+
+  border-collapse: collapse;
+  border: 3px solid #020202;
+}
+
+thead th:nth-child(1) {
+  width: 10%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 15%;
+}
+
+thead th:nth-child(5) {
+  width: 15%;
+}
+
+
+thead th:nth-child(6) {
+  width: 15%;
+}
+
+table th {
+  padding: 5px;
+  border: 1px solid black;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+
+}
+
+table td {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+button {
+  margin-left: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  width: 136px;
+
+}
+

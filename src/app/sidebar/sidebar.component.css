@@ -1,13 +1,14 @@
 
 .sidebar-container {
   position: absolute;
-  width: 417px;
-  height: 1018px;
+  width: 390px;
+  height: 100%;
   left: 0px;
   top: 0px;
   background: #17242A;
 }
-.align-first{
+
+.align-first {
   margin-top: 52px;
 }
 
@@ -16,7 +17,7 @@ label {
   margin-left: 28px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 24px;
 }
 
@@ -24,7 +25,7 @@ h3 {
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   color: white;
 }
 
@@ -39,7 +40,7 @@ ul li {
   font-family: Inter;
   font-style: normal;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
 
 }
 
@@ -55,13 +56,14 @@ ul a {
 
 input {
   margin-left: 28px;
-  width: 358px;
+  width: 325px;
   height: 25px;
 
 }
-select{
+
+select {
   margin-left: 28px;
-  width: 358px;
+  width: 335px;
   height: 35px;
 }
 
@@ -87,4 +89,25 @@ select{
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.fa fa-home {
+  width: 50px;
+  height: 50px;
+
+}
+
+.icon_container {
+  padding: 5px;
+  background: #245167;
+  width: 30px;
+  height: 30px;
+  margin-left: 28px;
+  margin-top: 28px;
+}
+button{
+
+  background: #17242A;
+  width: 50px;
+  height: 50px;
 }
