@@ -67,3 +67,8 @@ input[type=date]:focus {
 input[type=number]:focus {
   background-color: rgb(246, 245, 245);
 }
+.dark_shade_gray {
+  background: #7D7B7B;
+  color: white;
+}
+

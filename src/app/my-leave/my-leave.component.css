@@ -1,3 +1,10 @@
+.global_initial_container{
+  background: white;
+  border: 1px solid black;
+}
+h1{
+  color: black;
+}
 table {
   width: 1440px;
   font-family: 'Inter', sans-serif;
@@ -60,5 +67,9 @@ button {
   height: 30px;
 }
 
+.dark_shade_gray {
+  background: #7D7B7B;
+  color: white;
+}
 
 
