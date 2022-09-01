@@ -23,9 +23,9 @@
 }
 
 h1 {
-  font-family: 'Arial';
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: bolder;
+  font-weight: 700;
   font-size: 32px;
 }
 
@@ -40,15 +40,30 @@ h1 {
   width: 365px;
   height: 34px;
 }
+
 .light_blueGreen_shade {
   background: #3AAFA9;
   color: white;
 }
-input{
+
+input {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
 }
-select{
+
+select {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
+}
+
+input[type=text]:focus {
+  background-color: rgb(246, 245, 245);
+}
+
+input[type=date]:focus {
+  background-color: rgb(246, 245, 245);
+}
+
+input[type=number]:focus {
+  background-color: rgb(246, 245, 245);
 }

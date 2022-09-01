@@ -1,0 +1,27 @@
+label {
+  display: inline-block;
+  margin-left: 33px;
+  margin-top: 25px;
+  font-family: 'Inter',sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+}
+input{
+  width: 239px;
+  height: 42px;
+  font-size: 20px;
+
+
+}
+
+textarea {
+  width: 358px;
+  height: 130px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+}
+
