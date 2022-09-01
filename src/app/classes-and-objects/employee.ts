@@ -1,8 +1,8 @@
-export class Employee {
+export interface Employee {
+
   id: number;
   name: string;
   role: string;
   manager: number;
-  leaveBalance: number;
-
+  leave_balance: number;
 }
