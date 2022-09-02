@@ -11,6 +11,14 @@ import {Subscribable, Subscriber, Subscription} from "rxjs";
 })
 export class SidebarComponent implements OnInit {
 
+  protected showEmployeeLabel: boolean;
+  protected showViewAllEmployee: boolean;
+  protected showAddNewEmployee: boolean;
+  protected showAllLeavesLabel: boolean;
+  protected showViewAllLeaves: boolean;
+  protected showApplyLeave: boolean;
+  protected showMyLeave: boolean;
+
   public employeeList;
   public loading;
   public hasError;
@@ -24,8 +32,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployeesData();
-
-
   }
 
 
@@ -33,6 +39,7 @@ export class SidebarComponent implements OnInit {
     this.loading = true;
     this.sidebar_service.getEmployees().subscribe((response) => {
         this.employeeList = response.content;
+
         console.log(response);
       }, (error) => {
         console.log(error);
@@ -56,6 +63,35 @@ export class SidebarComponent implements OnInit {
       }
     });
     this.shared_service.changeEmployee(result);
+    this.setShowContents(result);
+  }
+
+  setShowContents(employee: any) {
+    if (employee.role == 'EMPLOYEE') {
+      this.showEmployeeLabel = false;
+      this.showViewAllEmployee = false;
+      this.showAddNewEmployee = false;
+      this.showAllLeavesLabel = true;
+      this.showViewAllLeaves = false;
+      this.showApplyLeave = true;
+      this.showMyLeave = true;
+    } else if (employee.role == 'MANAGER') {
+      this.showEmployeeLabel = false;
+      this.showViewAllEmployee = false;
+      this.showAddNewEmployee = false;
+      this.showAllLeavesLabel = true;
+      this.showViewAllLeaves = true;
+      this.showApplyLeave = true;
+      this.showMyLeave = true;
+    } else {
+      this.showEmployeeLabel = true;
+      this.showViewAllEmployee = true;
+      this.showAddNewEmployee = true;
+      this.showAllLeavesLabel = true;
+      this.showViewAllLeaves = true;
+      this.showApplyLeave = true;
+      this.showMyLeave = true;
+    }
 
   }
 
