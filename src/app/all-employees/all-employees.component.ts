@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AddEmployeeService} from "../add-employee/add-employee.service";
 import {AllEmployeesService} from "./all-employees.service";
 
@@ -12,11 +12,17 @@ export class AllEmployeesComponent implements OnInit {
   public loading;
   public hasError;
 
-  constructor(private allEmployeeService: AllEmployeesService) { }
+  protected managerList: any[];
+
+  constructor(private allEmployeeService: AllEmployeesService) {
+  }
 
   ngOnInit(): void {
     this.getEmployeesData();
+    // this.identifyEmployeeManager(this.employeeList);
+    console.log(this.employeeList);
   }
+
   getEmployeesData() {
     this.loading = true;
     this.allEmployeeService.getEmployees().subscribe((response) => {
@@ -29,5 +35,17 @@ export class AllEmployeesComponent implements OnInit {
     ).add(() => {
       this.loading = false;
     });
+  }
+
+
+  // identifyEmployeeManager(list: any) {
+  //  list.forEach(it => {
+  //    this.managerList.push(it.manager.name);
+  //    console.log(it.manager.name.toString());
+  //  });
+  // }
+
+  ngOnDestroy(){
+    this.managerList.splice(0);
   }
 }
