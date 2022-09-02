@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Employee} from "../classes-and-objects/employee";
+
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({

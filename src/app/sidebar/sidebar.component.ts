@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SidebarService} from "./sidebar.service";
-import {Employee} from "../classes-and-objects/employee";
+
 import {SharedService} from "../shared.service";
 import {Subscribable, Subscriber, Subscription} from "rxjs";
 
@@ -32,6 +32,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployeesData();
+    console.log('reset-log');
   }
 
 
