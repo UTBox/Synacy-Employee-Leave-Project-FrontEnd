@@ -21,18 +21,6 @@
   margin-left: 420px;
   margin-top: 20px;
 }
-.global_secondary_container_admin {
-  margin-left: 420px;
-  margin-top: 20px;
-}
-.global_secondary_container {
-  margin-left: 420px;
-  margin-top: 20px;
-}
-.global_secondary_container {
-  margin-left: 420px;
-  margin-top: 20px;
-}
 
 
 h1 {
@@ -80,6 +68,7 @@ input[type=date]:focus {
 input[type=number]:focus {
   background-color: rgb(246, 245, 245);
 }
+
 .dark_shade_gray {
   background: #7D7B7B;
   color: white;

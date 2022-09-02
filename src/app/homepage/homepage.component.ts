@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {SidebarService} from "../sidebar/sidebar.service";
 import {Subscription} from "rxjs";
 import {SharedService} from "../shared.service";
 

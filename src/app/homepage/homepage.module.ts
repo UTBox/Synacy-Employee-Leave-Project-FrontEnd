@@ -7,7 +7,7 @@ import {HomepageComponent} from "./homepage.component";
 
 @NgModule({
   declarations: [
-    HomepageComponent
+    // HomepageComponent
   ],
   imports: [
     CommonModule,
