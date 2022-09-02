@@ -12,6 +12,8 @@ import {ApplyLeaveRoutingModule} from "./apply-leave/apply-leave-routing.module"
 import {MyLeaveRoutingModule} from "./my-leave/my-leave-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {HomepageComponent} from "./homepage/homepage.component";
 
 
 
@@ -19,6 +21,7 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     AppComponent,
     SidebarComponent,
+    HomepageComponent
 
   ],
   imports: [
