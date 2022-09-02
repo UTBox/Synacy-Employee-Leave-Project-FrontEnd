@@ -10,19 +10,19 @@
       <th scope="col">Id</th>
       <th scope="col">Name</th>
       <th scope="col">Manager</th>
-      <th scope="col">Total Leaves</th>
+      <th scope="col">Total Annual Leaves</th>
       <th scope="col">Leave Balance</th>
       <th scope="col"></th>
     </tr>
     </thead>
     <!--TODO: should use ngFor for generating values fetched from database-->
     <tbody>
-    <tr>
-      <td>1</td>
-      <td >Dexter Sy</td>
-      <td>ADMIN</td>
-      <td>0</td>
-      <td>0</td>
+    <tr  *ngFor="let employee of employeeList">
+      <td>{{employee.id}}</td>
+      <td >{{employee.name}}</td>
+      <td>{{employee.role}}</td>
+      <td>{{employee.annualLeave}}</td>
+      <td>{{employee.leaveBalance}}</td>
       <td><button class="light_blueGreen_shade">Edit Details</button></td>
     </tr>
 

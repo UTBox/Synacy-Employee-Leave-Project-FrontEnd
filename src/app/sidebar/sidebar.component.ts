@@ -3,6 +3,7 @@ import {SidebarService} from "./sidebar.service";
 
 import {SharedService} from "../shared.service";
 import {Subscribable, Subscriber, Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -27,18 +28,17 @@ export class SidebarComponent implements OnInit {
 
   subscription: Subscription;
 
-  constructor(private sidebar_service: SidebarService, private shared_service: SharedService) {
+  constructor(private sidebarService: SidebarService, private sharedService: SharedService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.getEmployeesData();
-    console.log('reset-log');
   }
 
 
   getEmployeesData() {
     this.loading = true;
-    this.sidebar_service.getEmployees().subscribe((response) => {
+    this.sidebarService.getEmployees().subscribe((response) => {
         this.employeeList = response.content;
 
         console.log(response);
@@ -51,6 +51,7 @@ export class SidebarComponent implements OnInit {
   }
 
   onEmployeeSelected() {
+    this.router.navigate(['/']);
     console.log(this.selectedEmployeeId);
     this.setChosenEmployeeData(this.selectedEmployeeId);
   }
@@ -63,7 +64,7 @@ export class SidebarComponent implements OnInit {
         result = it;
       }
     });
-    this.shared_service.changeEmployee(result);
+    this.sharedService.changeEmployee(result);
     this.setShowContents(result);
   }
 
@@ -93,7 +94,10 @@ export class SidebarComponent implements OnInit {
       this.showApplyLeave = true;
       this.showMyLeave = true;
     }
+  }
 
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
 }

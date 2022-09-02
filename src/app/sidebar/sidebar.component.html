@@ -22,15 +22,19 @@
   <div class="option-container">
     <h3 *ngIf="showEmployeeLabel">Employees:</h3>
     <ul>
-      <li *ngIf="showViewAllEmployee"><a class="hover-underline-animation" [routerLink]="['/employee/view_all']">View All</a></li>
-      <li *ngIf="showAddNewEmployee"><a class="hover-underline-animation" [routerLink]="['/employee/add']">Add New</a></li>
+      <li *ngIf="showViewAllEmployee"><a class="hover-underline-animation" [routerLink]="['/employee/view_all']">View
+        All</a></li>
+      <li *ngIf="showAddNewEmployee"><a class="hover-underline-animation" [routerLink]="['/employee/add']">Add New</a>
+      </li>
     </ul>
   </div>
   <div class="option-container">
     <h3 *ngIf="showAllLeavesLabel">Leaves:</h3>
     <ul>
-      <li *ngIf="showViewAllLeaves"><a class="hover-underline-animation" [routerLink]="['/leave/view_all']">View All</a></li>
-      <li *ngIf="showApplyLeave"><a class="hover-underline-animation" [routerLink]="['/leave/apply_leave']">Apply Leave</a></li>
+      <li *ngIf="showViewAllLeaves"><a class="hover-underline-animation" [routerLink]="['/leave/view_all']">View All</a>
+      </li>
+      <li *ngIf="showApplyLeave"><a class="hover-underline-animation" [routerLink]="['/leave/apply_leave']">Apply
+        Leave</a></li>
       <li *ngIf="showMyLeave"><a class="hover-underline-animation" [routerLink]="['/leave/my_leave']">My Leave</a></li>
     </ul>
   </div>

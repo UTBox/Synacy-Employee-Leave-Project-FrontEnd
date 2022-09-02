@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AddEmployeeService} from "./add-employee.service";
 
 
 @Component({
@@ -9,11 +10,15 @@ import {Component, OnInit} from '@angular/core';
 export class AddEmployeeComponent implements OnInit {
 
 
-  constructor() {
+
+  constructor(private addEmployeeService: AddEmployeeService) {
   }
 
   ngOnInit(): void {
 
+
   }
+
+
 
 }
