@@ -21,7 +21,8 @@ import {HomepageComponent} from "./homepage/homepage.component";
   declarations: [
     AppComponent,
     SidebarComponent,
-    HomepageComponent
+    HomepageComponent,
+    SidebarComponent
 
   ],
   imports: [
