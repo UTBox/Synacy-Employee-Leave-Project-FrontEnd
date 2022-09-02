@@ -9,20 +9,22 @@ import {SharedService} from "../shared.service";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  employee: any;
   subscription: Subscription;
 
-  id: number;
-  name: string;
-  role: string;
-  manager: number;
-  leave: number;
 
   constructor(private shared_service: SharedService) {
+    this.subscription = this.shared_service.chosenEmployee
+      .subscribe(it => {
+        this.employee = it
+      });
   }
 
   ngOnInit(): void {
-    this.subscription = this.shared_service.employeeName.subscribe(name => this.name = name);
 
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

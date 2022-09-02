@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   public loading;
   public hasError;
 
-  selectedEmployeeId: number = 1;
+  selectedEmployeeId: number = 0;
 
   subscription: Subscription;
 
@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployeesData();
-    this.subscription = this.shared_service.employeeName.subscribe(it => console.log(it));
+
 
   }
 
@@ -49,8 +49,14 @@ export class SidebarComponent implements OnInit {
 
 
   setChosenEmployeeData(id: number) {
-      let result = this.employeeList.filter((it) => (it.id == id));
-      this.shared_service.changeEmployeeName(result.name);
+    let result: any;
+    this.employeeList.filter((it) => {
+      if (it.id == id) {
+        result = it;
+      }
+    });
+    this.shared_service.changeEmployee(result);
+
   }
 
 }

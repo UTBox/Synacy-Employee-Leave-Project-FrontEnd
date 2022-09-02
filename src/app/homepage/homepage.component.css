@@ -8,25 +8,35 @@ h1 {
   color: black;
 }
 
-.admin_container {
+.default_employee_container {
+  height: 80px;
+  width: 1440px;
+  left: 453px;
+  background: #8c8c8c;
+}
+
+
+.admin-container {
   height: 80px;
   width: 1440px;
   left: 453px;
   background: #2B7A77;
+
 }
 
 .manager-container {
   height: 80px;
   width: 1440px;
   left: 453px;
-  background: #2B7A77;
+  background: #F49E18;
+
 }
 
 .employee-container {
   height: 80px;
   width: 1440px;
   left: 453px;
-  background: #2B7A77;
+  background: #97C13E;
 }
 
 h3 {
@@ -38,7 +48,7 @@ h3 {
   font-size: 30px;
 }
 
-.welcome_container {
+.hello_container {
   width: 180px;
   height: 80px;
 
