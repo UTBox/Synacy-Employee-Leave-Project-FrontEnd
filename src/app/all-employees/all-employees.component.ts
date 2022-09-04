@@ -19,7 +19,6 @@ export class AllEmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployeesData();
-    // this.identifyEmployeeManager(this.employeeList);
     console.log(this.employeeList);
   }
 
@@ -38,14 +37,7 @@ export class AllEmployeesComponent implements OnInit {
   }
 
 
-  // identifyEmployeeManager(list: any) {
-  //  list.forEach(it => {
-  //    this.managerList.push(it.manager.name);
-  //    console.log(it.manager.name.toString());
-  //  });
-  // }
-
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.managerList.splice(0);
   }
 }
