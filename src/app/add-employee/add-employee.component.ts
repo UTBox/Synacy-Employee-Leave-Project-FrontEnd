@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AddEmployeeService} from "./add-employee.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -8,6 +9,7 @@ import {AddEmployeeService} from "./add-employee.service";
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
+  public addEmployeeForm: FormGroup;
 
   protected role: string[] = ['MANAGER', 'EMPLOYEE'];
 
@@ -15,10 +17,16 @@ export class AddEmployeeComponent implements OnInit {
   public loading;
   public hasError;
 
-  // protected managerEmployees: [{id: number, name:string, role: string, manager:any, leaveBalance: number, annualLeave: number}];
   protected managerEmployees;
 
   constructor(private addEmployeeService: AddEmployeeService) {
+    this.addEmployeeForm = new FormGroup({
+        name: new FormControl('', [Validators.required]),
+        manager: new FormControl(),
+        annualLeave: new FormControl(0, [Validators.min(1)]),
+        role: new FormControl()
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -45,7 +53,11 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   filterManager() {
-    this, this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
+    this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
+  }
+
+  protected submitAddEmployeeForm(){
+
   }
 
 

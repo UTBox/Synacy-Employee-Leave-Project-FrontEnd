@@ -22,5 +22,16 @@ label {
   font-size: 24px;
   line-height: 29px;
 }
+.add_new_employee_submitButton{
+  background: #DEF2F1;
+  margin-left: 300px;
+  margin-top: 50px;
+  width: 300px;
+  height: 50px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+}
 
 
