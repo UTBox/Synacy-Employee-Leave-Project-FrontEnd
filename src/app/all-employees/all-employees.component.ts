@@ -12,7 +12,6 @@ export class AllEmployeesComponent implements OnInit {
   public loading;
   public hasError;
 
-  protected managerList: any[];
 
   constructor(private allEmployeeService: AllEmployeesService) {
   }
@@ -38,6 +37,6 @@ export class AllEmployeesComponent implements OnInit {
 
 
   ngOnDestroy() {
-    this.managerList.splice(0);
+
   }
 }
