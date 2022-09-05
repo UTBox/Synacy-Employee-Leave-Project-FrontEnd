@@ -4,14 +4,13 @@ import {AddEmployeeService} from "./add-employee.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
-
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-
+  public employeeFormGroup: FormGroup;
 
   protected role: string[] = ['MANAGER', 'EMPLOYEE'];
 
@@ -25,6 +24,12 @@ export class AddEmployeeComponent implements OnInit {
   protected chosenRole: string = 'EMPLOYEE';
 
   constructor(private addEmployeeService: AddEmployeeService) {
+    this.employeeFormGroup = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      role: new FormControl(),
+      annualLeave: new FormControl(0, [Validators.min(1)]),
+      managerId: new FormControl('', [Validators.required])
+    });
 
 
   }
@@ -59,20 +64,24 @@ export class AddEmployeeComponent implements OnInit {
     this.adminEmployees = [...this.employeeList.filter(it => it.role == 'ADMIN')];
 
 
-
   }
 
 
-  onEmployeeCreate(employee: { name: string, role: string, annualLeave: number,  managerId: number }) {
+  onEmployeeCreate(employeeForm: FormGroup) {
+    let employee: { name: string, role: string, annualLeave: number, managerId: number };
+    employee = {
+      name: employeeForm.controls['name'].value,
+      role: employeeForm.controls['role'].value,
+      annualLeave: employeeForm.controls['annualLeave'].value,
+      managerId: employeeForm.controls['managerId'].value
+    };
     console.log(employee);
     this.addEmployeeService.createNewEmployee(employee);
   }
 
-  logChoice(){
+  logChoice() {
     console.log(this.chosenRole);
   }
-
-
 
 
 }
