@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -14,10 +14,17 @@ export class AddEmployeeService {
   }
 
 
-
   getEmployees() {
-    const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
+    const headers = new HttpHeaders({'Content-Type': this.CONTENT_TYPE});
     return this.http.get<any>(`http://localhost:8080/api/v1/employee`, {headers: headers});
+  }
+
+  createNewEmployee(employee: { name: string, managerId: number, annualLeave: number, role: string }) {
+    const headers = new HttpHeaders({'Content-Type': this.CONTENT_TYPE});
+    return this.http.post(`http://localhost:8080/api/v1/employee`, employee, {headers: headers}).subscribe((response) => {
+      console.log(response);
+    });
+
   }
 
 }

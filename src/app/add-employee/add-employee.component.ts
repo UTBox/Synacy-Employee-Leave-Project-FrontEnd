@@ -9,7 +9,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-  public addEmployeeForm: FormGroup;
+  // public addEmployeeForm: FormGroup;
+
 
   protected role: string[] = ['MANAGER', 'EMPLOYEE'];
 
@@ -17,23 +18,20 @@ export class AddEmployeeComponent implements OnInit {
   public loading;
   public hasError;
 
+
   protected managerEmployees;
+  protected adminEmployees;
+  protected chosenRole;
 
   constructor(private addEmployeeService: AddEmployeeService) {
-    this.addEmployeeForm = new FormGroup({
-        name: new FormControl('', [Validators.required]),
-        manager: new FormControl(),
-        annualLeave: new FormControl(0, [Validators.min(1)]),
-        role: new FormControl()
-      }
-    );
+
   }
 
   ngOnInit(): void {
     this.getEmployeesData();
     // console.log(this.employeeList);
     setTimeout(() => {
-      this.filterManager();
+      this.filterManagerAndAdmin();
       console.log(this.managerEmployees);
     }, 500)
 
@@ -52,13 +50,24 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
-  filterManager() {
+  filterManagerAndAdmin() {
     this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
+    this.adminEmployees = [...this.employeeList.filter(it => it.role == 'ADMIN')];
   }
 
-  protected submitAddEmployeeForm(){
-
+  onEmployeeCreate(employee: { name: string, managerId: number, annualLeave: number, role: string }) {
+    console.log(employee);
+    this.addEmployeeService.createNewEmployee(employee);
   }
+
+  // chooseEmployeeTypeDisplay():void{
+  //   if(this.chosenRole == 'MANAGER'){
+  //
+  //   }else{
+  //
+  //   }
+  //
+  // }
 
 
 }

@@ -1,29 +1,28 @@
 <div class="global_initial_container">
-  <h1>Add Employee
-    <!--    <button class="add_new_employee_submitButton" name="add_new_employee_submit">Submit</button>-->
-  </h1>
+  <h1>Add Employee</h1>
 
 </div>
 <div class="global_secondary_container">
-  <form [formGroup]="addEmployeeForm" name="addEmployeeForm">
+<!--  <form [formGroup]="addEmployeeForm" name="addEmployeeForm">-->
+  <form  #addEmployeeForm="ngForm" (ngSubmit)="onEmployeeCreate(addEmployeeForm.value)">
     <label>
-      Name: <input name="name" formControlName="name" class="input_class" style="left: 183px;" type="text"
-                   [placeholder]="'This is required'">
+      Name:
+      <input name="name" ngModel  class="input_class" style="left: 183px;" type="text" [placeholder]="'This is required'">
     </label>
     <!--    <h5 *ngIf="addEmployeeForm.controls['name'].errors?.['required']">*This is Required!</h5>-->
     <br>
+        <label>Role:
+          <select class="select_class" style="left: 200px;" name="role" ngModel>
+            <option *ngFor="let displayRole of role" value="{{displayRole}}}" >{{displayRole}}</option>
+          </select></label>
+    <label>Total No. of Leaves: <input name="annualLeave" ngModel class="input_class" style="left: 33px;" type="number">
+    </label>
+    <br>
+
     <label>Manager:
-      <select name="manager" formControlName="manger" class="select_class" style="left: 150px;"
-              id="add_new_employee_manager_selector">
-        <option *ngFor="let manager of managerEmployees" value="manager.id">{{manager.name}}</option>
+      <select name="managerId" ngModel class="select_class" style="left: 150px;" id="add_new_employee_manager_selector">
+        <option *ngFor="let manager of managerEmployees" value="{{manager.id}}">{{manager.name}}</option>
       </select></label><br>
-    <label>Total No. of Leaves: <input name="annualLeave" formControlName="annualLeave" class="input_class"
-                                       style="left: 33px;" type="number">
-    </label><br>
-    <label>Role:
-      <select class="select_class" style="left: 200px;" name="role" formControlName="role">
-        <option *ngFor="let displayRole of role" value="displayRole">{{displayRole}}</option>
-      </select></label>
     <br>
     <br>
     <button class="add_new_employee_submitButton" name="add_new_employee_submit">Submit</button>
