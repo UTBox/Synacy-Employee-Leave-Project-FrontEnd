@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AddEmployeeService} from "./add-employee.service";
+
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 
 
 @Component({
@@ -9,6 +11,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
+
 
   protected role: string[] = ['MANAGER', 'EMPLOYEE'];
 
@@ -56,7 +59,9 @@ export class AddEmployeeComponent implements OnInit {
     this.adminEmployees = [...this.employeeList.filter(it => it.role == 'ADMIN')];
 
 
+
   }
+
 
   onEmployeeCreate(employee: { name: string, role: string, annualLeave: number,  managerId: number }) {
     console.log(employee);
@@ -66,6 +71,7 @@ export class AddEmployeeComponent implements OnInit {
   logChoice(){
     console.log(this.chosenRole);
   }
+
 
 
 

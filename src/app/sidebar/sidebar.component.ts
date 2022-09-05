@@ -47,6 +47,8 @@ export class SidebarComponent implements OnInit {
     ).add(() => {
       this.loading = false;
     });
+
+
   }
 
   onEmployeeSelected() {
