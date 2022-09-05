@@ -21,17 +21,20 @@ export class AddEmployeeComponent implements OnInit {
 
   protected managerEmployees;
   protected adminEmployees;
-  protected chosenRole;
+  protected chosenRole: string = 'EMPLOYEE';
 
   constructor(private addEmployeeService: AddEmployeeService) {
+
 
   }
 
   ngOnInit(): void {
+    console.log(this.chosenRole);
     this.getEmployeesData();
     // console.log(this.employeeList);
     setTimeout(() => {
       this.filterManagerAndAdmin();
+      console.log(this.adminEmployees);
       console.log(this.managerEmployees);
     }, 500)
 
@@ -53,6 +56,8 @@ export class AddEmployeeComponent implements OnInit {
   filterManagerAndAdmin() {
     this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
     this.adminEmployees = [...this.employeeList.filter(it => it.role == 'ADMIN')];
+
+
   }
 
   onEmployeeCreate(employee: { name: string, managerId: number, annualLeave: number, role: string }) {
@@ -60,6 +65,9 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmployeeService.createNewEmployee(employee);
   }
 
+  logChoice(){
+    console.log(this.chosenRole);
+  }
   // chooseEmployeeTypeDisplay():void{
   //   if(this.chosenRole == 'MANAGER'){
   //

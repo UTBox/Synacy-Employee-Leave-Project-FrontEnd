@@ -40,8 +40,7 @@ export class SidebarComponent implements OnInit {
     this.loading = true;
     this.sidebarService.getEmployees().subscribe((response) => {
         this.employeeList = response.content;
-
-        console.log(response);
+        // console.log(response);
       }, (error) => {
         console.log(error);
       }
