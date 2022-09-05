@@ -1,22 +1,38 @@
 <div class="global_initial_container">
-  <h1>Add Employee
-      <button class="add_new_employee_submitButton" name="add_new_employee_submit">Submit</button>
-  </h1>
+  <h1>Add Employee</h1>
 
 </div>
 <div class="global_secondary_container">
-  <label>Name: <input class="input_class" style="left: 183px;" type="text" name="add_new_employee_name_input"> </label><br>
-  <label>Manager:
-  <select class="select_class"  style="left: 150px;" name="managerSelector" id="add_new_employee_manager_selector">
-    <option value="Dexter Sy">Dexter Sy</option>
-    <option value="Mark B">Mark B</option>
-    <option value="Vergil O.">Vergil O.</option>
-  </select></label><br>
-  <label>Total No. of Leaves: <input class="input_class" style="left: 33px;"  type="number" name="add_new_employee_total_number_of_leaves_input"> </label><br>
-  <!--  Todo: use ngFor for iterating through the values of ROLE fetched from database-->
-  <label>Role:
-  <select class="select_class" style="left: 200px;" name="roleSelector" id="add_new_employee_role_selector">
-    <option value="MANAGER">MANAGER</option>
-    <option value="EMPLOYEE">EMPLOYEE</option>
-  </select></label>
+<!--  <form [formGroup]="addEmployeeForm" name="addEmployeeForm">-->
+  <form  #addEmployeeForm="ngForm" (ngSubmit)="onEmployeeCreate(addEmployeeForm.value)">
+    <label>
+      Name:
+      <input name="name" ngModel  class="input_class" style="left: 183px;" type="text" [placeholder]="'This is required'">
+    </label>
+    <!--    <h5 *ngIf="addEmployeeForm.controls['name'].errors?.['required']">*This is Required!</h5>-->
+    <br>
+    <label>Role:
+      <select [(ngModel)] = "chosenRole"  (ngModelChange)="logChoice()"  class="select_class" style="left: 200px;" name="role" ngModel>
+        <option *ngFor="let displayRole of role" value="{{displayRole}}">{{displayRole}}</option>
+      </select>
+    </label>
+    <br>
+    <label>Total No. of Leaves:
+      <input name="annualLeave" ngModel class="input_class" style="left: 33px;" type="number">
+    </label>
+    <br>
+        <label>Manager:
+          <select *ngIf="chosenRole === 'EMPLOYEE'" name="managerId"  ngModel class="select_class" style="left: 150px;">
+            <option *ngFor="let manager of managerEmployees" [ngValue]="manager.id">{{manager.name}}</option>
+          </select>
+          <select *ngIf="chosenRole === 'MANAGER'" name="managerId"  ngModel class="select_class" style="left: 150px;">
+            <option *ngFor="let manager of adminEmployees" [ngValue]="manager.id">{{manager.name}}</option>
+          </select>
+        </label>
+    <br>
+    <br>
+    <br>
+    <button class="add_new_employee_submitButton" name="add_new_employee_submit">Submit</button>
+  </form>
+
 </div>

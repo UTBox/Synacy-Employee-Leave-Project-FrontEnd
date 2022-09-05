@@ -40,20 +40,22 @@ export class SidebarComponent implements OnInit {
     this.loading = true;
     this.sidebarService.getEmployees().subscribe((response) => {
         this.employeeList = response.content;
-
-        console.log(response);
+        // console.log(response);
       }, (error) => {
         console.log(error);
       }
     ).add(() => {
       this.loading = false;
     });
+
+
   }
 
   onEmployeeSelected() {
-    this.router.navigate(['/']);
     console.log(this.selectedEmployeeId);
     this.setChosenEmployeeData(this.selectedEmployeeId);
+    this.router.navigate(['/']);
+
   }
 
 
@@ -91,13 +93,10 @@ export class SidebarComponent implements OnInit {
       this.showAddNewEmployee = true;
       this.showAllLeavesLabel = true;
       this.showViewAllLeaves = true;
-      this.showApplyLeave = true;
-      this.showMyLeave = true;
+      this.showApplyLeave = false;
+      this.showMyLeave = false;
     }
   }
 
-  reloadCurrentPage() {
-    window.location.reload();
-  }
 
 }

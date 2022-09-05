@@ -15,17 +15,18 @@
       <th scope="col"></th>
     </tr>
     </thead>
-    <!--TODO: should use ngFor for generating values fetched from database-->
     <tbody>
-    <tr  *ngFor="let employee of employeeList; index as i">
+
+    <tr *ngFor="let employee of employeeList; index as i">
       <td>{{employee.id}}</td>
-      <td >{{employee.name}}</td>
-<!--      <td>{{this.identifyEmployeeManager(employee.manager)}}</td>-->
-<!--      <td>{{employee.manager}}</td>-->
-      <td>i</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.manager}}</td>
       <td>{{employee.annualLeave}}</td>
       <td>{{employee.leaveBalance}}</td>
-      <td><button class="light_blueGreen_shade">Edit Details</button></td>
+      <td>
+        <button class="light_blueGreen_shade">Edit Details</button>
+      </td>
+
     </tr>
 
   </table>
