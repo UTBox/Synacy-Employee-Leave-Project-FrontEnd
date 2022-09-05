@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AddEmployeeService} from "./add-employee.service";
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -20,10 +21,10 @@ export class AddEmployeeComponent implements OnInit {
 
 
   protected managerEmployees;
-  protected adminEmployees;
+  // protected adminEmployees;
   protected chosenRole: string = 'EMPLOYEE';
 
-  constructor(private addEmployeeService: AddEmployeeService) {
+  constructor(private addEmployeeService: AddEmployeeService, private router: Router) {
     this.employeeFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       role: new FormControl(),
@@ -37,10 +38,9 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.chosenRole);
     this.getEmployeesData();
-    // console.log(this.employeeList);
+
     setTimeout(() => {
       this.filterManagerAndAdmin();
-      console.log(this.adminEmployees);
       console.log(this.managerEmployees);
     }, 500)
 
@@ -60,8 +60,8 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   filterManagerAndAdmin() {
-    this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
-    this.adminEmployees = [...this.employeeList.filter(it => it.role == 'ADMIN')];
+    // this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
+    this.managerEmployees = [...this.employeeList.filter(it => (it.role == 'ADMIN' || it.role == 'MANAGER'))];
 
 
   }
@@ -77,6 +77,8 @@ export class AddEmployeeComponent implements OnInit {
     };
     console.log(employee);
     this.addEmployeeService.createNewEmployee(employee);
+    alert("New Employee Created Successfully.");
+    this.router.navigate(['/']);
   }
 
   logChoice() {
