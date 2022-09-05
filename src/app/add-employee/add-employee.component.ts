@@ -9,8 +9,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-  // public addEmployeeForm: FormGroup;
-
 
   protected role: string[] = ['MANAGER', 'EMPLOYEE'];
 
@@ -60,7 +58,7 @@ export class AddEmployeeComponent implements OnInit {
 
   }
 
-  onEmployeeCreate(employee: { name: string, managerId: number, annualLeave: number, role: string }) {
+  onEmployeeCreate(employee: { name: string, role: string, annualLeave: number,  managerId: number }) {
     console.log(employee);
     this.addEmployeeService.createNewEmployee(employee);
   }
@@ -68,14 +66,7 @@ export class AddEmployeeComponent implements OnInit {
   logChoice(){
     console.log(this.chosenRole);
   }
-  // chooseEmployeeTypeDisplay():void{
-  //   if(this.chosenRole == 'MANAGER'){
-  //
-  //   }else{
-  //
-  //   }
-  //
-  // }
+
 
 
 }

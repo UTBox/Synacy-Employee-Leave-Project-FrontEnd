@@ -12,7 +12,7 @@
     <!--    <h5 *ngIf="addEmployeeForm.controls['name'].errors?.['required']">*This is Required!</h5>-->
     <br>
     <label>Role:
-      <select (ngModelChange)="logChoice()" [(ngModel)] = "chosenRole"  class="select_class" style="left: 200px;" name="role" ngModel>
+      <select [(ngModel)] = "chosenRole"  (ngModelChange)="logChoice()"  class="select_class" style="left: 200px;" name="role" ngModel>
         <option *ngFor="let displayRole of role" value="{{displayRole}}">{{displayRole}}</option>
       </select>
     </label>

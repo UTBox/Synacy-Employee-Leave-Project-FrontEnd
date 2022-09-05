@@ -19,7 +19,7 @@ export class AddEmployeeService {
     return this.http.get<any>(`http://localhost:8080/api/v1/employee`, {headers: headers});
   }
 
-  createNewEmployee(employee: { name: string, managerId: number, annualLeave: number, role: string }) {
+  createNewEmployee(employee: { name: string, role: string, annualLeave: number, managerId: number }) {
     const headers = new HttpHeaders({'Content-Type': this.CONTENT_TYPE});
     return this.http.post(`http://localhost:8080/api/v1/employee`, employee, {headers: headers}).subscribe((response) => {
       console.log(response);
