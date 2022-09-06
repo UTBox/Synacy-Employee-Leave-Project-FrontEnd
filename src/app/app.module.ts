@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HomepageComponent} from "./homepage/homepage.component";
+import {AllLeaveModule} from "./all-leave/all-leave.module";
 
 
 
@@ -31,6 +32,7 @@ import {HomepageComponent} from "./homepage/homepage.component";
     AppRoutingModule,
     AddEmployeeModule,
     AllEmployeesModule,
+    AllLeaveModule,
     AllLeaveRoutingModule,
     HomepageRoutingModule,
     ApplyLeaveRoutingModule,

@@ -16,12 +16,12 @@
     </thead>
     <!--TODO: should use ngFor for generating values fetched from database-->
     <tbody>
-    <tr>
-      <td>Vergil O.</td>
-      <td>Dexter Sy</td>
-      <td>08/31/2022</td>
-      <td>09/3/2022</td>
-      <td>4</td>
+    <tr *ngFor="let leave of leaveList; index as i">
+      <td>{{leave.employee}}</td>
+      <td>{{leave.manager}}</td>
+      <td>{{leave.startDate}}</td>
+      <td>{{leave.endDate}}</td>
+      <td>{{leave.leaveDays}}</td>
       <td>
         <button class="dark_shade_gray">Approve</button>
         <button class="light_blueGreen_shade">Reject</button>
