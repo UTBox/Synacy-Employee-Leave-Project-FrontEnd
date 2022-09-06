@@ -16,7 +16,7 @@
     </thead>
     <!--TODO: should use ngFor for generating values fetched from database-->
     <tbody>
-    <tr *ngFor="let leave of leaveList; index as i">
+    <tr *ngFor="let leave of leaveList">
       <td>{{leave.employee}}</td>
       <td>{{leave.manager}}</td>
       <td>{{leave.startDate}}</td>
