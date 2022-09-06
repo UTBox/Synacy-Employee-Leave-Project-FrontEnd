@@ -21,7 +21,6 @@ export class AddEmployeeComponent implements OnInit {
 
 
   protected managerEmployees;
-  // protected adminEmployees;
   protected chosenRole: string = 'EMPLOYEE';
 
   constructor(private addEmployeeService: AddEmployeeService, private router: Router) {
@@ -60,10 +59,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   filterManagerAndAdmin() {
-    // this.managerEmployees = [...this.employeeList.filter(it => it.role == 'MANAGER')];
     this.managerEmployees = [...this.employeeList.filter(it => (it.role == 'ADMIN' || it.role == 'MANAGER'))];
-
-
   }
 
 

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApplyLeaveComponent } from './apply-leave.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 describe('ApplyLeaveComponent', () => {
   let component: ApplyLeaveComponent;
@@ -8,7 +9,8 @@ describe('ApplyLeaveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApplyLeaveComponent ]
+      declarations: [ ApplyLeaveComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
 
