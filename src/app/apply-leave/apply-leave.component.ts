@@ -3,6 +3,7 @@ import {Subscription} from "rxjs";
 import {SharedService} from "../shared.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApplyLeaveService} from "./apply-leave.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-apply-leave',
@@ -23,7 +24,8 @@ export class ApplyLeaveComponent implements OnInit {
 
 
   constructor(private shared_service: SharedService,
-              private applyLeave_service: ApplyLeaveService) {
+              private applyLeave_service: ApplyLeaveService,
+              private router: Router) {
 
     this.subscription = this.shared_service.chosenEmployee.subscribe(it => {
         this.employee = it
@@ -54,22 +56,25 @@ export class ApplyLeaveComponent implements OnInit {
   }
 
   submitLeaveApplication(leaveForm: FormGroup) {
-    let leave: { startDate: Date, endDate: Date, reason: string, employeeId: number, manager: string };
+    let leave: { startDate: Date, endDate: Date, reason: string, employeeId: number };
     leave = {
       startDate: leaveForm.controls['start_date'].value,
       endDate: leaveForm.controls['end_date'].value,
       reason: leaveForm.controls['leave_reason'].value,
       employeeId: this.employee.id,
-      manager: this.employee.manager
     };
 
     if (this.applyLeave_service.inspectItemOnSubmit(leave) == true &&
       this.applyLeave_service.numberOfLeaveIsAllowed
       (this.displayNumberOfDaysLeave, this.employee.annualLeave) == true) {
       /**write code for post request here*/
+
+      this.applyLeave_service.persistLeave(leave);
+
+      this.router.navigate(['/']);
       console.log('acceptable.')
     } else {
-      console.log('error!!');
+      console.log('Error: Something is wrong with your leave application. Please review it and try again.');
     }
   }
 

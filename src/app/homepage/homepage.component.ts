@@ -23,6 +23,9 @@ export class HomepageComponent implements OnInit {
     this.subscription = this.shared_service.chosenEmployee
       .subscribe(it => {
         this.employee = it;
+
+        console.log(this.employee);
+
         this.getEmployeeRole = this.employee.role;
         if (this.employee.manager != null) {
           this.getManagerName = this.employee.manager.name;
