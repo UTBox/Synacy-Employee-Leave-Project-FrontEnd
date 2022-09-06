@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HomepageComponent} from "./homepage/homepage.component";
+import {MyLeaveModule} from "./my-leave/my-leave.module";
 
 
 
@@ -35,7 +36,8 @@ import {HomepageComponent} from "./homepage/homepage.component";
     HomepageRoutingModule,
     ApplyLeaveRoutingModule,
     MyLeaveRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MyLeaveModule
   ],
   providers: [],
   bootstrap: [AppComponent]
