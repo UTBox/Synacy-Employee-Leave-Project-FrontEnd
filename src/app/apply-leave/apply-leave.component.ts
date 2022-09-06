@@ -53,14 +53,6 @@ export class ApplyLeaveComponent implements OnInit {
     this.displayNumberOfDaysLeave = daysLeave(this.startDate, this.endDate);
   }
 
-  numberOfLeaveIsAllowed(): boolean {
-    if (this.displayNumberOfDaysLeave > this.employee.annualLeave) {
-      alert(`Error: You only have: ${this.employee.annualLeave} leaves. Please apply again.`);
-      return false;
-    }
-    return true;
-  }
-
   submitLeaveApplication(leaveForm: FormGroup) {
     let leave: { startDate: Date, endDate: Date, reason: string, employeeId: number, manager: string };
     leave = {
@@ -72,8 +64,10 @@ export class ApplyLeaveComponent implements OnInit {
     };
 
     if (this.applyLeave_service.inspectItemOnSubmit(leave) == true &&
-      this.numberOfLeaveIsAllowed() == true) {
+      this.applyLeave_service.numberOfLeaveIsAllowed
+      (this.displayNumberOfDaysLeave, this.employee.annualLeave) == true) {
       /**write code for post request here*/
+      console.log('acceptable.')
     } else {
       console.log('error!!');
     }

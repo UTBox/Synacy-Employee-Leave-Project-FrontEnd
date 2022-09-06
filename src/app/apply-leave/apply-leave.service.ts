@@ -24,4 +24,13 @@ export class ApplyLeaveService {
     const msInDay = 24 * 60 * 60 * 1000;
     return Math.round(Math.abs(Number(endDate) - Number(startDate)) / msInDay);
   }
+
+  numberOfLeaveIsAllowed(appliedLeave: number, employeeAnnualLeave): boolean {
+    if (appliedLeave > employeeAnnualLeave) {
+      alert(`Error: You only have: ${employeeAnnualLeave} leaves. Please apply again.`);
+      return false;
+    }
+    return true;
+  }
+
 }
