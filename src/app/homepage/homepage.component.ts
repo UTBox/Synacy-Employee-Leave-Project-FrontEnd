@@ -19,21 +19,18 @@ export class HomepageComponent implements OnInit {
 
 
   constructor(private shared_service: SharedService) {
+
     this.subscription = this.shared_service.chosenEmployee
       .subscribe(it => {
-        this.employee = it
+        this.employee = it;
         this.getEmployeeRole = this.employee.role;
         if (this.employee.manager != null) {
           this.getManagerName = this.employee.manager.name;
-        }else{
+        } else {
           this.getManagerName = '';
         }
 
-
-        if (this.employee.role == 'EMPLOYEE') {
-          this.showManagerText = true;
-          this.showRemainingLeave = true;
-        } else if (this.employee.role == 'MANAGER') {
+        if (this.employee.role == 'EMPLOYEE' || this.employee.role == 'MANAGER') {
           this.showManagerText = true;
           this.showRemainingLeave = true;
         } else {
@@ -47,7 +44,6 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   ngOnDestroy() {
