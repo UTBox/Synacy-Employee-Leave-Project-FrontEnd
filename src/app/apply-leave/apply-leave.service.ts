@@ -30,6 +30,9 @@ export class ApplyLeaveService {
     } else if (leave.endDate < leave.startDate) {
       alert('Error: End date is before Start date.');
       return false;
+    }else if (leave.reason == ''){
+      alert('Error: Reason field has no content. Please include a reason on leave application and try again.');
+      return false;
     }
     return true;
   }
