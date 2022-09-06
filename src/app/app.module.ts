@@ -11,10 +11,12 @@ import {HomepageRoutingModule} from "./homepage/homepage-routing.module";
 import {ApplyLeaveRoutingModule} from "./apply-leave/apply-leave-routing.module";
 import {MyLeaveRoutingModule} from "./my-leave/my-leave-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HomepageComponent} from "./homepage/homepage.component";
 import {AllLeaveModule} from "./all-leave/all-leave.module";
+import {ApplyLeaveModule} from "./apply-leave/apply-leave.module";
+
 
 
 
@@ -28,16 +30,21 @@ import {AllLeaveModule} from "./all-leave/all-leave.module";
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+
     AddEmployeeModule,
+    ApplyLeaveModule,
     AllEmployeesModule,
     AllLeaveModule,
+
     AllLeaveRoutingModule,
     HomepageRoutingModule,
     ApplyLeaveRoutingModule,
     MyLeaveRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
