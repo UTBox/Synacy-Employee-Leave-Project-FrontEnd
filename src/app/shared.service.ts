@@ -6,7 +6,7 @@ import {BehaviorSubject, Subject} from "rxjs";
 })
 export class SharedService {
   private employeeSource = new BehaviorSubject(
-    {id: 0, name: '', role: '', managerId: 0, annualLeave: 0, leaveBalance: 0});
+    {id: 0, name: '', role: '', manager: '', annualLeave: 0, leaveBalance: 0});
   chosenEmployee = this.employeeSource.asObservable();
 
 
