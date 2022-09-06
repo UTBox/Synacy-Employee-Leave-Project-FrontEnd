@@ -10,6 +10,7 @@ export class AllLeaveComponent implements OnInit {
   public leaveList;
   public loading;
   public hasError;
+  public pendingLeaves: any;
 
   constructor(private allLeaveService: AllLeaveService ) { }
 
@@ -17,12 +18,14 @@ export class AllLeaveComponent implements OnInit {
     this.getLeaveInfo();
     console.log(this.leaveList);
 
+
   }
 
   getLeaveInfo(){
     this.loading = true;
     this.allLeaveService.getLeaves().subscribe((response) =>{
       this.leaveList=response.content;
+      this.filterLeaves();
 
       console.log(response);
     }, error => {
@@ -30,6 +33,10 @@ export class AllLeaveComponent implements OnInit {
     }).add(()=>{
       this.loading=false;
     });
+  }
+
+  filterLeaves(){
+    this.pendingLeaves =[...this.leaveList.filter(it =>(it.status == 'PENDING'))]
   }
 
 }
