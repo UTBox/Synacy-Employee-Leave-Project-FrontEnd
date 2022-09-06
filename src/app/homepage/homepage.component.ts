@@ -30,6 +30,7 @@ export class HomepageComponent implements OnInit {
           this.getManagerName = '';
         }
 
+
         if (this.employee.role == 'EMPLOYEE' || this.employee.role == 'MANAGER') {
           this.showManagerText = true;
           this.showRemainingLeave = true;

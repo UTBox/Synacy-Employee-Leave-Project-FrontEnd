@@ -14,8 +14,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HomepageComponent} from "./homepage/homepage.component";
+import {MyLeaveModule} from "./my-leave/my-leave.module";
 import {AllLeaveModule} from "./all-leave/all-leave.module";
 import {ApplyLeaveModule} from "./apply-leave/apply-leave.module";
+
 
 
 
@@ -44,6 +46,8 @@ import {ApplyLeaveModule} from "./apply-leave/apply-leave.module";
     ApplyLeaveRoutingModule,
     MyLeaveRoutingModule,
     HttpClientModule,
+
+    MyLeaveModule
 
   ],
   providers: [],
