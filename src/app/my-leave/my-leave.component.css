@@ -41,7 +41,9 @@ thead th:nth-child(5) {
 thead th:nth-child(6) {
   width: 15%;
 }
-
+thead th:nth-child(7) {
+  width: 15%;
+}
 table th {
   padding: 5px;
   border: 1px solid black;
@@ -62,7 +64,7 @@ button {
   font-style: normal;
   font-weight: 400;
   margin-left: 20px;
-  font-size: 16px;
+  font-size: 15px;
   width: 80px;
   height: 30px;
 }
