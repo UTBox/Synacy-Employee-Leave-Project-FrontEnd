@@ -22,6 +22,9 @@ export class MyLeaveService {
   }
 
   leaveisCancellable(leaveStatus: string): boolean {
-    return leaveStatus == "PENDING";
+    if(leaveStatus == "PENDING"){
+      return true;
+    }
+    return false;
   }
 }
