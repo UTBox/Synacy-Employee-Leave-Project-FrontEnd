@@ -12,6 +12,13 @@ export class AllEmployeesComponent implements OnInit {
   public loading;
   public hasError;
 
+  protected paginationIndex: number = 1;
+  protected totalNumberOfEmployee: number;
+  protected numberOfPagesToDisplay: number;
+
+  protected showPrevButton: boolean = false;
+  protected showNextButton: boolean = true;
+
 
   constructor(private allEmployeeService: AllEmployeesService) {
   }
@@ -19,14 +26,18 @@ export class AllEmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployeesData();
     console.log(this.employeeList);
+
   }
 
   getEmployeesData() {
     this.loading = true;
-    this.allEmployeeService.getEmployees().subscribe((response) => {
+    this.allEmployeeService.getEmployees(this.paginationIndex).subscribe((response) => {
         this.employeeList = response.content;
+        this.totalNumberOfEmployee = response.totalCount;
 
         console.log(response);
+
+        this.numberOfPagesToDisplay = this.allEmployeeService.calculateNumberOfPages(this.totalNumberOfEmployee);
       }, (error) => {
         console.log(error);
       }
@@ -39,4 +50,36 @@ export class AllEmployeesComponent implements OnInit {
   ngOnDestroy() {
 
   }
+
+  paginationNextButton(): void {
+    if (this.paginationIndex < this.numberOfPagesToDisplay) {
+      this.paginationIndex++;
+    }
+    this.getEmployeesData()
+    this.inspectPaginationForButtonAccess();
+    console.log(this.paginationIndex);
+  }
+
+  paginationPrevButton(): void {
+    if (this.paginationIndex > 1) {
+      this.paginationIndex--;
+    }
+    this.getEmployeesData()
+    this.inspectPaginationForButtonAccess();
+    console.log(this.paginationIndex);
+  }
+
+  inspectPaginationForButtonAccess(): void {
+    if (this.paginationIndex <= 1) {
+      this.showPrevButton = false;
+      this.showNextButton = true;
+    } else if (this.paginationIndex == this.numberOfPagesToDisplay) {
+      this.showPrevButton = true;
+      this.showNextButton = false;
+    } else {
+      this.showPrevButton = true;
+      this.showNextButton = true;
+    }
+  }
+
 }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 /* You can add global styles to this file, and also import other style files */
 .global_initial_container {
@@ -20,6 +21,17 @@
 .global_secondary_container {
   margin-left: 420px;
   margin-top: 20px;
+}
+
+.pagination_button_container {
+  margin-left: 420px;
+  margin-top: 20px;
+}
+
+.pagination_button_decrement {
+}
+
+.pagination_button_increment {
 }
 
 
@@ -74,7 +86,7 @@ input[type=number]:focus {
   color: white;
 }
 
-.general_submit_button{
+.general_submit_button {
   background: #DEF2F1;
   margin-left: 300px;
   margin-top: 50px;
