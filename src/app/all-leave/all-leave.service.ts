@@ -20,6 +20,11 @@ export class AllLeaveService {
     return this.http.get<any>(`http://localhost:8080/api/v1/leave?managerId=${managerId}`,{headers:headers});
   }
 
+  updateLeaveStatus(status:{status: string},leaveId : number) : Observable<any>{
+    const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
+    return this.http.put(`http://localhost:8080/api/v1/leave/${leaveId}`,status, {headers: headers});
+  }
+
 
 
 }
