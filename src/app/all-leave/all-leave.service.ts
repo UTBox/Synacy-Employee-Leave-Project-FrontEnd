@@ -15,4 +15,11 @@ export class AllLeaveService {
     return this.http.get<any>(`http://localhost:8080/api/v1/leave`,{headers:headers});
   }
 
+  getLeavesByManager(managerId:number):Observable<any> {
+    const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
+    return this.http.get<any>(`http://localhost:8080/api/v1/leave?managerId=${managerId}`,{headers:headers});
+  }
+
+
+
 }

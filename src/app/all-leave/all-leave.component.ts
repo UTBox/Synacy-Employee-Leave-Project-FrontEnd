@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AllLeaveService} from "./all-leave.service";
+import {SharedService} from "../shared.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-all-leave',
@@ -12,7 +14,17 @@ export class AllLeaveComponent implements OnInit {
   public hasError;
   public pendingLeaves: any;
 
-  constructor(private allLeaveService: AllLeaveService ) { }
+  employee: any;
+  subscription: Subscription;
+
+  constructor(private allLeaveService: AllLeaveService, private shared_service: SharedService) {
+    this.subscription = this.shared_service.chosenEmployee.subscribe(it =>
+      {
+        this.employee = it;
+      }
+    );
+
+  }
 
   ngOnInit(): void {
     if(this.employee.role == 'MANAGER'){
