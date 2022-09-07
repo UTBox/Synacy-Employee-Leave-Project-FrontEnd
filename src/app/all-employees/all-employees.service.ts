@@ -10,9 +10,14 @@ export class AllEmployeesService {
 
   constructor(private http:HttpClient) { }
 
-  getEmployees() {
+  public getEmployees(page: number) {
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
-    return this.http.get<any>(`http://localhost:8080/api/v1/employee/pageable`, {headers: headers});
+    return this.http.get<any>(`http://localhost:8080/api/v1/employee/pageable?page=${page}`, {headers: headers});
 
+  }
+
+
+  public calculateNumberOfPages(numberOfPages: number): number {
+    return Math.ceil(numberOfPages / 10);
   }
 }
