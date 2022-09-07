@@ -41,6 +41,9 @@ export class MyLeaveComponent implements OnInit {
       this.loading = false;
       });
   }
+  cancelLeave(leaveId) {
+    this.myLeaveService.cancelMyLeave(leaveId);
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

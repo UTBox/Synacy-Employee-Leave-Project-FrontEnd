@@ -14,6 +14,10 @@ export class MyLeaveService {
   getMyLeave(employeeId : number): Observable<any> {
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
     return this.http.get<any>(`http://localhost:8080/api/v1/leave?employeeId=${employeeId}`, {headers: headers});
+  }
 
+  cancelMyLeave(leaveId : number): Observable<any> {
+    const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
+    return this.http.delete<any>(`http://localhost:8080/api/v1/leave/${leaveId}`, {headers: headers});
   }
 }
