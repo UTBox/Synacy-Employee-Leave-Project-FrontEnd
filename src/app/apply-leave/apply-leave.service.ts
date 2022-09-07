@@ -12,10 +12,10 @@ export class ApplyLeaveService {
   constructor(private http: HttpClient) {
   }
 
-  persistLeave(leaveBody: { startDate: Date, endDate: Date, reason: string, employeeId: number }){
+  persistLeave(leaveBody: { startDate: Date, endDate: Date, reason: string, employeeId: number }) {
     console.log(leaveBody);
     const headers = new HttpHeaders({'Content-Type': this.CONTENT_TYPE});
-    return this.http.post(`http://localhost:8080/api/v1/leave`,leaveBody,{headers: headers}).subscribe((response) => {
+    return this.http.post(`http://localhost:8080/api/v1/leave`, leaveBody, {headers: headers}).subscribe((response) => {
       console.log(response);
       alert("Leave filled successfully.");
     });
@@ -24,13 +24,10 @@ export class ApplyLeaveService {
 
 
   inspectItemOnSubmit(leave: { startDate: Date, endDate: Date, reason: string, employeeId: number }): boolean {
-    if (leave.startDate == leave.endDate) {
-      alert('Error: Both Start and End date and the same.');
-      return false;
-    } else if (leave.endDate < leave.startDate) {
+    if (leave.endDate < leave.startDate) {
       alert('Error: End date is before Start date.');
       return false;
-    }else if (leave.reason == ''){
+    } else if (leave.reason == '') {
       alert('Error: Reason field has no content. Please include a reason on leave application and try again.');
       return false;
     }
