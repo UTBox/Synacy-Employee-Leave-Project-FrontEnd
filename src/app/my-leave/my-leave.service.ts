@@ -18,6 +18,10 @@ export class MyLeaveService {
 
   cancelMyLeave(leaveId : number): Observable<any> {
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
-    return this.http.delete<any>(`http://localhost:8080/api/v1/leave/${leaveId}`, {headers: headers});
+    return this.http.delete(`http://localhost:8080/api/v1/leave/${leaveId}`, {headers: headers});
+  }
+
+  leaveisCancellable(leaveStatus: string): boolean {
+    return leaveStatus == "PENDING";
   }
 }
