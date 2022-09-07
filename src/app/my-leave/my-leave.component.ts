@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MyLeaveService} from "./my-leave.service";
 import {Subscription} from "rxjs";
 import {SharedService} from "../shared.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-leave',
@@ -17,7 +18,7 @@ export class MyLeaveComponent implements OnInit {
   public loading;
   public hasError;
 
-  constructor(private myLeaveService : MyLeaveService, private shared_service: SharedService) {
+  constructor(private myLeaveService : MyLeaveService, private shared_service: SharedService, private router: Router) {
     this.subscription = this.shared_service.chosenEmployee.subscribe(it => {
       this.employee = it;
       this.employeeId = this.employee.id;
@@ -40,6 +41,18 @@ export class MyLeaveComponent implements OnInit {
     ).add(() => {
       this.loading = false;
       });
+  }
+  cancelLeave(leaveId, leaveStatus) {
+    if (this.myLeaveService.leaveisCancellable(leaveStatus)) {
+      this.myLeaveService.cancelMyLeave(leaveId).subscribe((response) => {
+        console.log(response);
+        alert("Leave cancelled.")
+        this.router.navigate(['/']);
+    });
+    } else {
+      alert("Leave cannot be cancelled.")
+      console.log("Error. Leave cannot be cancelled.")
+    }
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

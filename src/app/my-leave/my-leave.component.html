@@ -6,6 +6,7 @@
   <table>
     <thead>
     <tr>
+      <th scope ="col">Leave Id</th>
       <th scope="col">Start Date</th>
       <th scope="col">End Date</th>
       <th scope="col">Total Days on Leave</th>
@@ -15,14 +16,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let leave of leaveList; index as i">
+    <tr *ngFor="let leave of leaveList">
+      <td>{{leave.id}}</td>
       <td>{{leave.startDate}}</td>
       <td>{{leave.endDate}}</td>
       <td>{{leave.leaveDays}}</td>
       <td>{{leave.reason}}</td>
       <td>{{leave.status}}</td>
       <td>
-        <button class="dark_shade_gray">Cancel</button>
+        <button (click)="cancelLeave(leave.id, leave.status)" class="dark_shade_gray">Cancel</button>
       </td>
     </tr>
 
