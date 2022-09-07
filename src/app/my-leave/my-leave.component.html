@@ -24,7 +24,7 @@
       <td>{{leave.reason}}</td>
       <td>{{leave.status}}</td>
       <td>
-        <button (click)="cancelLeave({leave})" class="dark_shade_gray">Cancel</button>
+        <button (click)="cancelLeave(leave.id, leave.status)" class="dark_shade_gray">Cancel</button>
       </td>
     </tr>
 
