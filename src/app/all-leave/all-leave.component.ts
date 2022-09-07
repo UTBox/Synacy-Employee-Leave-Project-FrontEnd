@@ -15,15 +15,32 @@ export class AllLeaveComponent implements OnInit {
   constructor(private allLeaveService: AllLeaveService ) { }
 
   ngOnInit(): void {
-    this.getLeaveInfo();
-    console.log(this.leaveList);
+    if(this.employee.role == 'MANAGER'){
+      this.getLeaveInfobyManager(this.employee.id)
 
+    }else {
+      this.getLeaveInfo();
+    }
 
   }
 
   getLeaveInfo(){
     this.loading = true;
     this.allLeaveService.getLeaves().subscribe((response) =>{
+      this.leaveList=response.content;
+      this.filterLeaves();
+
+      console.log(response);
+    }, error => {
+      console.log(error)
+    }).add(()=>{
+      this.loading=false;
+    });
+  }
+
+  getLeaveInfobyManager(managerId :number){
+    this.loading = true;
+    this.allLeaveService.getLeavesByManager(managerId).subscribe((response) =>{
       this.leaveList=response.content;
       this.filterLeaves();
 
