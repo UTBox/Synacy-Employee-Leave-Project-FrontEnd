@@ -50,7 +50,7 @@ export class ApplyLeaveComponent implements OnInit {
     let daysLeave = (start: string, end: string) => {
       const startDate = new Date(start);
       const endDate = new Date(end);
-      return this.applyLeave_service.getDayDiff(startDate, endDate);
+      return this.applyLeave_service.getDayDiff(startDate, endDate) + 1;
     };
     this.displayNumberOfDaysLeave = daysLeave(this.startDate, this.endDate);
   }
