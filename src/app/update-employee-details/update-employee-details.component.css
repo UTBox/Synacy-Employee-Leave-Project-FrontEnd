@@ -1,0 +1,37 @@
+
+.global_initial_container button {
+  width: 151px;
+  height: 44px;
+  background: #DEF2F1;
+  color: black;
+  font-family: 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  float: right;
+  margin-right: 30px;
+}
+
+label {
+  display: inline-block;
+  margin-left: 33px;
+  margin-top: 25px;
+  font-family: 'Inter',sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+}
+.note_container{
+  background: #a6a4a4;
+  padding: 10px;
+  width: 1420px;
+}
+
+.note_container label {
+  font-size: medium;
+font-weight: 300;
+  margin: 0 0 0 20px;
+}
+
+

@@ -8,12 +8,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class SidebarService {
   private readonly CONTENT_TYPE = 'application/json';
 
-
   constructor(private http: HttpClient) {
-
   }
-
-
 
   getEmployees() {
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});

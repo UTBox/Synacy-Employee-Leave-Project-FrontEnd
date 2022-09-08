@@ -17,6 +17,8 @@ import {HomepageComponent} from "./homepage/homepage.component";
 import {MyLeaveModule} from "./my-leave/my-leave.module";
 import {AllLeaveModule} from "./all-leave/all-leave.module";
 import {ApplyLeaveModule} from "./apply-leave/apply-leave.module";
+import { UpdateEmployeeDetailsComponent } from './update-employee-details/update-employee-details.component';
+import {UpdateEmployeeDetailsModule} from "./update-employee-details/update-employee-details.module";
 
 
 
@@ -27,7 +29,8 @@ import {ApplyLeaveModule} from "./apply-leave/apply-leave.module";
     AppComponent,
     SidebarComponent,
     HomepageComponent,
-    SidebarComponent
+    SidebarComponent,
+
 
   ],
   imports: [
@@ -37,6 +40,7 @@ import {ApplyLeaveModule} from "./apply-leave/apply-leave.module";
     AppRoutingModule,
 
     AddEmployeeModule,
+    UpdateEmployeeDetailsModule,
     ApplyLeaveModule,
     AllEmployeesModule,
     AllLeaveModule,
