@@ -3,6 +3,7 @@ import {AddEmployeeService} from "./add-employee.service";
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {SharedService} from "../shared.service";
 
 
 @Component({
@@ -42,7 +43,6 @@ export class AddEmployeeComponent implements OnInit {
 
     setTimeout(() => {
       this.filterManagerAndAdmin();
-      console.log(this.managerEmployees);
     }, 500)
 
 

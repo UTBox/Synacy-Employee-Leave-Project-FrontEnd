@@ -1,27 +1,23 @@
 <div class="global_initial_container">
-  <h1>Add Employee</h1>
+  <h1>Update Employee Details</h1>
 
 </div>
 <div class="global_secondary_container">
 
-  <form [formGroup]="employeeFormGroup" (ngSubmit)="onEmployeeCreate(employeeFormGroup)" name="employeeFormGroup">
+  <form [formGroup]="updateEmployeeForm" (ngSubmit)="onEmployeeUpdate(updateEmployeeForm)"
+        name="updateEmployeeFormGroup">
     <label>
       Name:
       <input required formControlName="name" ngModel class="input_class" style="left: 183px;" type="text"
              [placeholder]="'This is required'">
     </label>
-    <!--    <h5 *ngIf="addEmployeeForm.controls['name'].errors?.['required']">*This is Required!</h5>-->
     <br>
     <label>Role:
-      <select [(ngModel)]="chosenRole" (ngModelChange)="showRemainingInputFieldsIfNotAdmin()" class="select_class" style="left: 200px;"
+      <select [(ngModel)]="chosenRole" (ngModelChange)="showRemainingInputFieldsIfNotAdmin()" class="select_class"
+              style="left: 200px;"
               formControlName="role" ngModel>
         <option *ngFor="let displayRole of role" value="{{displayRole}}">{{displayRole}}</option>
       </select>
-    </label>
-    <br>
-    <label *ngIf="showInputManagerField">Total No. of Leaves:
-      <input required min="1" formControlName="annualLeave" ngModel class="input_class" style="left: 33px;"
-             type="number">
     </label>
     <br>
     <label *ngIf="showInputManagerField">Manager:
@@ -32,7 +28,7 @@
     <br>
     <br>
     <br>
-    <button class="general_submit_button" name="add_new_employee_submit">Submit</button>
+    <button class="general_submit_button">Submit</button>
   </form>
 
 </div>

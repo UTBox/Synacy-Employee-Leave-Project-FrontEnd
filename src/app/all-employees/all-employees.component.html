@@ -27,7 +27,7 @@
       <td>{{employee.annualLeave}}</td>
       <td>{{employee.leaveBalance}}</td>
       <td>
-        <button class="light_blueGreen_shade">Edit Details</button>
+        <button class="light_blueGreen_shade"  [routerLink]="['/employee/view', employee.id]">Edit Details</button>
       </td>
 
     </tr>

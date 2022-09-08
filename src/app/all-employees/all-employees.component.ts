@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AddEmployeeService} from "../add-employee/add-employee.service";
 import {AllEmployeesService} from "./all-employees.service";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-all-employees',
@@ -19,8 +20,10 @@ export class AllEmployeesComponent implements OnInit {
   protected showPrevButton: boolean = false;
   protected showNextButton: boolean = true;
 
+  protected chosenEmployeeId: number;
 
-  constructor(private allEmployeeService: AllEmployeesService) {
+
+  constructor(private allEmployeeService: AllEmployeesService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -81,5 +84,6 @@ export class AllEmployeesComponent implements OnInit {
       this.showNextButton = true;
     }
   }
+
 
 }
