@@ -1,7 +1,7 @@
-
 import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,24 @@ export class AddEmployeeService {
     });
 
   }
+
+  valuesAreValid(employeeForm: FormGroup): boolean {
+    let hasNull: number = 0;
+
+    Object.keys(employeeForm.controls).forEach(key => {
+      if (employeeForm.controls[key].value == '') {
+        hasNull++;
+      }
+    });
+
+    if (employeeForm.controls['role'].value == 'ADMIN' && hasNull == 2) {
+      return true;
+    } else if (hasNull >= 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 
 }

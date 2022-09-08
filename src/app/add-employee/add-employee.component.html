@@ -13,18 +13,18 @@
     <!--    <h5 *ngIf="addEmployeeForm.controls['name'].errors?.['required']">*This is Required!</h5>-->
     <br>
     <label>Role:
-      <select [(ngModel)]="chosenRole" (ngModelChange)="logChoice()" class="select_class" style="left: 200px;"
+      <select [(ngModel)]="chosenRole" (ngModelChange)="showRemainingInputFieldsIfNotAdmin()" class="select_class" style="left: 200px;"
               formControlName="role" ngModel>
         <option *ngFor="let displayRole of role" value="{{displayRole}}">{{displayRole}}</option>
       </select>
     </label>
     <br>
-    <label>Total No. of Leaves:
+    <label *ngIf="showInputManagerField">Total No. of Leaves:
       <input required min="1" formControlName="annualLeave" ngModel class="input_class" style="left: 33px;"
              type="number">
     </label>
     <br>
-    <label>Manager:
+    <label *ngIf="showInputManagerField">Manager:
       <select required formControlName="managerId" ngModel class="select_class" style="left: 150px;">
         <option *ngFor="let manager of managerEmployees" value="{{manager.id}}">{{manager.name}}</option>
       </select>
