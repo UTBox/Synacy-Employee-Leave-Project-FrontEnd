@@ -69,10 +69,22 @@ export class AllLeaveComponent implements OnInit {
     this.pendingLeaves =[...this.leaveList.filter(it =>(it.status == 'PENDING'))]
   }
 
-  changeLeaveStatus(leaveId,leaveStatus){
-    this.allLeaveService.updateLeaveStatus(leaveStatus,leaveId).subscribe((response)=>{
+  approveLeaveStatus(leaveId) {
+    let  leaveStatus: {status: string}
+    leaveStatus = {status: "APPROVED"}
+    this.allLeaveService.updateLeaveStatus(leaveStatus, leaveId).subscribe((response) => {
       console.log(response);
-      alert("Leave Status is updated!")
+      alert("Leave is approved!")
+      this.router.navigate(['/']);
+    });
+  }
+
+  rejectLeaveStatus(leaveId) {
+    let leaveStatus: {status: string}
+    leaveStatus = {status: "REJECTED"}
+    this.allLeaveService.updateLeaveStatus(leaveStatus, leaveId).subscribe((response) => {
+      console.log(response);
+      alert("Leave is rejected!")
       this.router.navigate(['/']);
     });
   }

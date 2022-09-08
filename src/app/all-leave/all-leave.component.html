@@ -23,8 +23,8 @@
       <td>{{leave.endDate}}</td>
       <td>{{leave.leaveDays}}</td>
       <td>
-        <button class="dark_shade_gray" (click)="changeLeaveStatus(leave.id,'APPROVED')"> Approve </button>
-        <button class="light_blueGreen_shade" (click)="changeLeaveStatus(leave.id,'REJECTED')"> Reject </button>
+        <button class="dark_shade_gray" (click)="approveLeaveStatus(leave.id)"> Approve </button>
+        <button class="light_blueGreen_shade" (click)="rejectLeaveStatus(leave.id)"> Reject </button>
       </td>
     </tr>
 

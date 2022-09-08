@@ -6,7 +6,6 @@
   <table>
     <thead>
     <tr>
-      <th scope ="col">Leave Id</th>
       <th scope="col">Start Date</th>
       <th scope="col">End Date</th>
       <th scope="col">Total Days on Leave</th>
@@ -17,7 +16,6 @@
     </thead>
     <tbody>
     <tr *ngFor="let leave of leaveList">
-      <td>{{leave.id}}</td>
       <td>{{leave.startDate}}</td>
       <td>{{leave.endDate}}</td>
       <td>{{leave.leaveDays}}</td>
