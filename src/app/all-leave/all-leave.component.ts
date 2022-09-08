@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AllLeaveService} from "./all-leave.service";
 import {SharedService} from "../shared.service";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-all-leave',
@@ -17,7 +18,7 @@ export class AllLeaveComponent implements OnInit {
   employee: any;
   subscription: Subscription;
 
-  constructor(private allLeaveService: AllLeaveService, private shared_service: SharedService) {
+  constructor(private allLeaveService: AllLeaveService, private shared_service: SharedService, private router:Router) {
     this.subscription = this.shared_service.chosenEmployee.subscribe(it =>
       {
         this.employee = it;
@@ -66,6 +67,26 @@ export class AllLeaveComponent implements OnInit {
 
   filterLeaves(){
     this.pendingLeaves =[...this.leaveList.filter(it =>(it.status == 'PENDING'))]
+  }
+
+  approveLeaveStatus(leaveId) {
+    let  leaveStatus: {status: string}
+    leaveStatus = {status: "APPROVED"}
+    this.allLeaveService.updateLeaveStatus(leaveStatus, leaveId).subscribe((response) => {
+      console.log(response);
+      alert("Leave is approved!")
+      this.router.navigate(['/']);
+    });
+  }
+
+  rejectLeaveStatus(leaveId) {
+    let leaveStatus: {status: string}
+    leaveStatus = {status: "REJECTED"}
+    this.allLeaveService.updateLeaveStatus(leaveStatus, leaveId).subscribe((response) => {
+      console.log(response);
+      alert("Leave is rejected!")
+      this.router.navigate(['/']);
+    });
   }
 
 }
