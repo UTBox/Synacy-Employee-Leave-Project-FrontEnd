@@ -14,6 +14,7 @@ export class UpdateEmployeeDetailsComponent implements OnInit {
   protected managerEmployees;
   protected chosenRole: string = 'EMPLOYEE';
   protected showInputManagerField = true
+  protected managerNamePlaceholder: string;
 
   protected role: string[] = ['MANAGER', 'EMPLOYEE', 'ADMIN'];
 
@@ -22,6 +23,7 @@ export class UpdateEmployeeDetailsComponent implements OnInit {
   public hasError;
 
   protected focusedEmployeeId: number;
+
 
   updateEmployeeForm: FormGroup;
 
@@ -37,20 +39,27 @@ export class UpdateEmployeeDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployeesData();
     const routeParams = this.activatedRoute.snapshot.paramMap;
-    this.focusedEmployeeId = Number(routeParams.get('employeeId'));
-    console.log('focused number ->'+this.focusedEmployeeId);
+    const employeeIdFromRoute = Number(routeParams.get('employeeId'));
+    this.focusedEmployeeId = employeeIdFromRoute;
 
     setTimeout(() => {
       this.filterManagerAndAdmin();
-      this.getEmployeeDataById(this.focusedEmployeeId);
+      this.getEmployeeDataById(employeeIdFromRoute);
+
     }, 500)
+
+    setTimeout(() => {
+      this.managerNamePlaceholder = this.employee.manager;
+
+    }, 1000)
   }
 
   getEmployeeDataById(employeeId: number) {
     this.loading = true;
     this.updateEmployeeService.getEmployeeDetails(employeeId).subscribe((response) => {
-        this.employee = response.content;
-        // console.log(response);
+        this.employee = response;
+        this.setFormFields(this.employee);
+        console.log(this.employee);
       }, (error) => {
         console.log(error);
       }
@@ -85,11 +94,11 @@ export class UpdateEmployeeDetailsComponent implements OnInit {
 
       console.log(employee);
       this.updateEmployeeService.saveEmployeeDetails(employee);
-      alert("New Employee Created Successfully.");
-      this.router.navigate(['/']);
+      alert("Employee Updated Successfully.");
+      this.router.navigate(['/employee/view']);
 
     } else {
-      alert('Error: Some fields have no entries. Make sure all fields have entry and try again.')
+      alert('Error: Make sure you have re-entered all the input fields.')
     }
   }
 
@@ -123,6 +132,12 @@ export class UpdateEmployeeDetailsComponent implements OnInit {
     } else {
       this.showInputManagerField = true;
     }
+  }
+
+  protected setFormFields(employee: { id: number, name: string, role: string, manager: string, annualLeave: number, leaveBalance: number }): void {
+    this.updateEmployeeForm.controls['name'].setValue(employee.name);
+    this.updateEmployeeForm.controls['role'].setValue(employee.role);
+    this.managerNamePlaceholder = employee.manager;
   }
 
 

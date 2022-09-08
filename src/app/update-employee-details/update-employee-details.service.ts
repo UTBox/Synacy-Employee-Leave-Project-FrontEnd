@@ -20,7 +20,10 @@ export class UpdateEmployeeDetailsService {
 
   saveEmployeeDetails(requestBody: { id: number, name: string, role: string, managerId: number }) {
     const headers = new HttpHeaders({'Content-Type': this.CONTENT_TYPE});
-    return this.http.put(`http://localhost:8080/api/v1/employee/`, requestBody, {headers: headers});
+    return this.http.put(`http://localhost:8080/api/v1/employee/`, requestBody, {headers: headers}).subscribe((response) => {
+      console.log(response);
+
+    });
   }
 
   getEmployees() {

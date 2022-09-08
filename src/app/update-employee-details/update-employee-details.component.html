@@ -6,8 +6,13 @@
 
   <form [formGroup]="updateEmployeeForm" (ngSubmit)="onEmployeeUpdate(updateEmployeeForm)"
         name="updateEmployeeFormGroup">
-    <label>
-      Name:
+    <div class="note_container">
+      <label>
+        Note: You have to re-enter all the values on the input fields below to effectively update the employee data.
+      </label>
+    </div>
+    <br><br>
+    <label>Name:
       <input required formControlName="name" ngModel class="input_class" style="left: 183px;" type="text"
              [placeholder]="'This is required'">
     </label>
@@ -22,6 +27,7 @@
     <br>
     <label *ngIf="showInputManagerField">Manager:
       <select required formControlName="managerId" ngModel class="select_class" style="left: 150px;">
+        <option value="" disabled selected>{{this.managerNamePlaceholder}}</option>
         <option *ngFor="let manager of managerEmployees" value="{{manager.id}}">{{manager.name}}</option>
       </select>
     </label>

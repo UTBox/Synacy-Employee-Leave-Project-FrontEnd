@@ -12,6 +12,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
+      <th scope="col">Role</th>
       <th scope="col">Manager</th>
       <th scope="col">Total Annual Leaves</th>
       <th scope="col">Leave Balance</th>
@@ -23,11 +24,12 @@
     <tr *ngFor="let employee of employeeList">
       <td>{{employee.id}}</td>
       <td>{{employee.name}}</td>
+      <td>{{employee.role}}</td>
       <td>{{employee.manager}}</td>
       <td>{{employee.annualLeave}}</td>
       <td>{{employee.leaveBalance}}</td>
       <td>
-        <button class="light_blueGreen_shade"  [routerLink]="['/employee/view', employee.id]">Edit Details</button>
+        <button class="light_blueGreen_shade" [routerLink]="['/employee/view', employee.id]">Edit Details</button>
       </td>
 
     </tr>

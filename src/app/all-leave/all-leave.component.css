@@ -35,6 +35,10 @@ thead th:nth-child(6) {
   width: 15%;
 }
 
+thead th:nth-child(7) {
+  width: 15%;
+}
+
 table th {
   padding: 5px;
   border: 1px solid black;
