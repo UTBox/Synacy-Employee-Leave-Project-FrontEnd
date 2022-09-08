@@ -73,7 +73,7 @@ export class AllLeaveComponent implements OnInit {
     this.allLeaveService.updateLeaveStatus(leaveStatus,leaveId).subscribe((response)=>{
       console.log(response);
       alert("Leave Status is updated!")
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     });
   }
 
