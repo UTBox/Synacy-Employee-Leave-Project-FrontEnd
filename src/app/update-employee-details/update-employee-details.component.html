@@ -6,11 +6,7 @@
 
   <form [formGroup]="updateEmployeeForm" (ngSubmit)="onEmployeeUpdate(updateEmployeeForm)"
         name="updateEmployeeFormGroup">
-    <div class="note_container">
-      <label>
-        Note: You have to re-enter all the values on the input fields below to effectively update the employee data.
-      </label>
-    </div>
+
     <br><br>
     <label>Name:
       <input required formControlName="name" ngModel class="input_class" style="left: 183px;" type="text"
