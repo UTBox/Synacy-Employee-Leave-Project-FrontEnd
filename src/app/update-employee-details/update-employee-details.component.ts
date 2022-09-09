@@ -134,9 +134,10 @@ export class UpdateEmployeeDetailsComponent implements OnInit {
     }
   }
 
-  protected setFormFields(employee: { id: number, name: string, role: string, manager: string, annualLeave: number, leaveBalance: number }): void {
+  protected setFormFields(employee: { id: number, name: string, role: string, manager: string,managerId: number, annualLeave: number, leaveBalance: number }): void {
     this.updateEmployeeForm.controls['name'].setValue(employee.name);
     this.updateEmployeeForm.controls['role'].setValue(employee.role);
+    this.updateEmployeeForm.controls['managerId'].setValue(employee.managerId);
     this.managerNamePlaceholder = employee.manager;
   }
 
