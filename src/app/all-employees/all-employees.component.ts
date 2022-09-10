@@ -30,6 +30,7 @@ export class AllEmployeesComponent implements OnInit {
     this.getEmployeesData();
     console.log(this.employeeList);
 
+
   }
 
   getEmployeesData() {
@@ -41,6 +42,9 @@ export class AllEmployeesComponent implements OnInit {
         console.log(response);
 
         this.numberOfPagesToDisplay = this.allEmployeeService.calculateNumberOfPages(this.totalNumberOfEmployee);
+
+        this.showNextButton = this.numberOfPagesToDisplay <= 1 ? false : true;
+        this.inspectPaginationForButtonAccess();
       }, (error) => {
         console.log(error);
       }
@@ -59,7 +63,6 @@ export class AllEmployeesComponent implements OnInit {
       this.paginationIndex++;
     }
     this.getEmployeesData()
-    this.inspectPaginationForButtonAccess();
     console.log(this.paginationIndex);
   }
 
@@ -68,7 +71,6 @@ export class AllEmployeesComponent implements OnInit {
       this.paginationIndex--;
     }
     this.getEmployeesData()
-    this.inspectPaginationForButtonAccess();
     console.log(this.paginationIndex);
   }
 

@@ -18,6 +18,12 @@ export class AllLeaveComponent implements OnInit {
   employee: any;
   subscription: Subscription;
 
+  protected showPrevButton: boolean = false;
+  protected showNextButton: boolean = true;
+
+  protected paginationIndex :number =1;
+
+
   constructor(private allLeaveService: AllLeaveService, private shared_service: SharedService, private router:Router) {
     this.subscription = this.shared_service.chosenEmployee.subscribe(it =>
       {
@@ -39,7 +45,7 @@ export class AllLeaveComponent implements OnInit {
 
   getLeaveInfo(){
     this.loading = true;
-    this.allLeaveService.getLeaves().subscribe((response) =>{
+    this.allLeaveService.getLeaves(this.paginationIndex).subscribe((response) =>{
       this.leaveList=response.content;
       this.filterLeaves();
 
@@ -53,7 +59,7 @@ export class AllLeaveComponent implements OnInit {
 
   getLeaveInfobyManager(managerId :number){
     this.loading = true;
-    this.allLeaveService.getLeavesByManager(managerId).subscribe((response) =>{
+    this.allLeaveService.getLeavesByManager(this.paginationIndex,managerId).subscribe((response) =>{
       this.leaveList=response.content;
       this.filterLeaves();
 
@@ -87,6 +93,14 @@ export class AllLeaveComponent implements OnInit {
       alert("Leave is rejected!")
       this.router.navigate(['/']);
     });
+  }
+
+  paginationPrevButton(){
+
+  }
+
+  paginationNextButton(){
+
   }
 
 }
