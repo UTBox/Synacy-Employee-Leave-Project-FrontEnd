@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AllLeaveService} from "./all-leave.service";
 import {SharedService} from "../shared.service";
 import {Subscription} from "rxjs";
@@ -21,62 +21,81 @@ export class AllLeaveComponent implements OnInit {
   protected showPrevButton: boolean = false;
   protected showNextButton: boolean = true;
 
-  protected paginationIndex :number =1;
+  protected paginationIndex: number = 1;
+  protected totalNumberOfLeaves: number;
+  protected numberOfPagesToDisplay: number;
 
 
-  constructor(private allLeaveService: AllLeaveService, private shared_service: SharedService, private router:Router) {
-    this.subscription = this.shared_service.chosenEmployee.subscribe(it =>
-      {
+  constructor(private allLeaveService: AllLeaveService, private shared_service: SharedService, private router: Router) {
+    this.subscription = this.shared_service.chosenEmployee.subscribe(it => {
         this.employee = it;
+
       }
     );
 
   }
 
   ngOnInit(): void {
-    if(this.employee.role == 'MANAGER'){
+    this.fetchDataAccordingToRole();
+
+  }
+
+  fetchDataAccordingToRole() {
+    if (this.employee.role == 'MANAGER') {
       this.getLeaveInfobyManager(this.employee.id)
 
-    }else {
+    } else {
       this.getLeaveInfo();
     }
-
   }
 
-  getLeaveInfo(){
+  getLeaveInfo() {
     this.loading = true;
-    this.allLeaveService.getLeaves(this.paginationIndex).subscribe((response) =>{
-      this.leaveList=response.content;
-      this.filterLeaves();
+    this.allLeaveService.getLeaves(this.paginationIndex).subscribe((response) => {
+      this.leaveList = response.content;
 
-      console.log(response);
+      this.pendingLeaves = response.content.filter(it => (it.status == 'PENDING'));
+      this.totalNumberOfLeaves = response.totalCount;
+
+      this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
+
+      this.showNextButton = this.numberOfPagesToDisplay <= 1 ? false : true;
+      this.inspectPaginationForButtonAccess();
     }, error => {
       console.log(error)
-    }).add(()=>{
-      this.loading=false;
+    }).add(() => {
+      this.loading = false;
     });
   }
 
-  getLeaveInfobyManager(managerId :number){
+  getLeaveInfobyManager(managerId: number) {
     this.loading = true;
-    this.allLeaveService.getLeavesByManager(this.paginationIndex,managerId).subscribe((response) =>{
-      this.leaveList=response.content;
-      this.filterLeaves();
+    this.allLeaveService.getLeavesByManager(this.paginationIndex, managerId).subscribe((res) => {
+      this.leaveList = res.content;
 
-      console.log(response);
+      this.pendingLeaves = res.content.filter(it => (it.status == 'PENDING'));
+      this.totalNumberOfLeaves = res.totalCount;
+
+      this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
+
+      this.showNextButton = this.numberOfPagesToDisplay <= 1 ? false : true;
+      this.inspectPaginationForButtonAccess();
     }, error => {
       console.log(error)
-    }).add(()=>{
-      this.loading=false;
+    }).add(() => {
+      this.loading = false;
     });
   }
 
-  filterLeaves(){
-    this.pendingLeaves =[...this.leaveList.filter(it =>(it.status == 'PENDING'))]
+  filterLeaves() {
+    this.pendingLeaves = [...this.leaveList.filter(it => (it.status == 'PENDING'))];
+    this.totalNumberOfLeaves = this.pendingLeaves.size;
+    this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
+    console.log('number of pages ' + this.numberOfPagesToDisplay);
   }
 
   approveLeaveStatus(leaveId) {
-    let  leaveStatus: {status: string}
+    let leaveStatus: { status: string }
     leaveStatus = {status: "APPROVED"}
     this.allLeaveService.updateLeaveStatus(leaveStatus, leaveId).subscribe((response) => {
       console.log(response);
@@ -86,7 +105,7 @@ export class AllLeaveComponent implements OnInit {
   }
 
   rejectLeaveStatus(leaveId) {
-    let leaveStatus: {status: string}
+    let leaveStatus: { status: string }
     leaveStatus = {status: "REJECTED"}
     this.allLeaveService.updateLeaveStatus(leaveStatus, leaveId).subscribe((response) => {
       console.log(response);
@@ -95,12 +114,37 @@ export class AllLeaveComponent implements OnInit {
     });
   }
 
-  paginationPrevButton(){
-
+  paginationNextButton(): void {
+    if (this.paginationIndex < this.numberOfPagesToDisplay) {
+      this.paginationIndex++;
+    }
+    this.fetchDataAccordingToRole();
+    console.log(this.paginationIndex);
   }
 
-  paginationNextButton(){
+  paginationPrevButton(): void {
+    if (this.paginationIndex > 1) {
+      this.paginationIndex--;
+    }
+    this.fetchDataAccordingToRole();
+    console.log(this.paginationIndex);
+  }
 
+  private inspectPaginationForButtonAccess(): void {
+    if (this.numberOfPagesToDisplay == 1) {
+      this.showPrevButton = false;
+      this.showNextButton = false;
+    } else if (this.paginationIndex <= 1 && this.numberOfPagesToDisplay > 1) {
+      this.showPrevButton = false;
+      this.showNextButton = true;
+    } else if (this.paginationIndex <= this.numberOfPagesToDisplay && this.numberOfPagesToDisplay > 1) {
+      this.showPrevButton = true;
+      this.showNextButton = false;
+
+    } else {
+      this.showPrevButton = true;
+      this.showNextButton = true;
+    }
   }
 
 }

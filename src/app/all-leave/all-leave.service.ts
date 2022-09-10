@@ -25,4 +25,9 @@ export class AllLeaveService {
     return this.http.put(`http://localhost:8080/api/v1/leave/${leaveId}`,leaveStatus, {headers: headers});
   }
 
+
+  public calculateNumberOfPages(numberOfPages: number): number {
+    return Math.ceil(numberOfPages / 10);
+  }
+
 }
