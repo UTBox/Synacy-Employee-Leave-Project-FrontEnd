@@ -33,8 +33,6 @@ export class AddEmployeeComponent implements OnInit {
       annualLeave: new FormControl(null, [Validators.min(1)]),
       managerId: new FormControl(null, [Validators.required])
     });
-
-
   }
 
   ngOnInit(): void {

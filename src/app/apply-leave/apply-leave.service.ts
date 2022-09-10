@@ -30,13 +30,16 @@ export class ApplyLeaveService {
     } else if (leave.reason == '') {
       alert('Error: Reason field has no content. Please include a reason on leave application and try again.');
       return false;
+    } else if (leave.endDate == null || leave.startDate == null){
+      alert('Error: There is no Start or End Date. Please include start and end date on leave application and try again.');
+      return false
     }
     return true;
   }
 
   getDayDiff(startDate: Date, endDate: Date): number {
     const msInDay = 24 * 60 * 60 * 1000;
-    return Math.round(Math.abs(Number(endDate) - Number(startDate)) / msInDay);
+    return Math.round(Math.abs(Number(endDate) - Number(startDate)) / msInDay) + 1;
   }
 
   numberOfLeaveIsAllowed(appliedLeave: number, employeeAnnualLeave): boolean {
