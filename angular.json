@@ -19,7 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/XQS_LOGO_transparent.png",
               "src/assets"
             ],
             "styles": [
