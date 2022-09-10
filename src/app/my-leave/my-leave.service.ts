@@ -21,7 +21,7 @@ export class MyLeaveService {
     return this.http.delete(`http://localhost:8080/api/v1/leave/${leaveId}`, {headers: headers});
   }
 
-  leaveisCancellable(leaveStatus: string): boolean {
+  leaveIsCancellable(leaveStatus: string): boolean {
     if(leaveStatus == "PENDING"){
       return true;
     }

@@ -43,7 +43,7 @@ export class MyLeaveComponent implements OnInit {
       });
   }
   cancelLeave(leaveId, leaveStatus) {
-    if (this.myLeaveService.leaveisCancellable(leaveStatus)) {
+    if (this.myLeaveService.leaveIsCancellable(leaveStatus)) {
       this.myLeaveService.cancelMyLeave(leaveId).subscribe((response) => {
         console.log(response);
         alert("Leave cancelled.")

@@ -26,8 +26,8 @@ export class AllLeaveService {
   }
 
 
-  public calculateNumberOfPages(numberOfPages: number): number {
-    return Math.ceil(numberOfPages / 10);
+  public calculateNumberOfPages(numberOfLeaves: number): number {
+    return Math.ceil(numberOfLeaves / 10);
   }
 
 }
