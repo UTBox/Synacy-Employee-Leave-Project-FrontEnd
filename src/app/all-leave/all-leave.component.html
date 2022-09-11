@@ -13,6 +13,7 @@
       <th scope="col">Start</th>
       <th scope="col">End</th>
       <th scope="col">Days</th>
+      <th scope="col">Reason</th>
       <th scope="col">Status</th>
     </tr>
     </thead>
@@ -24,6 +25,7 @@
       <td>{{leave.startDate}}</td>
       <td>{{leave.endDate}}</td>
       <td>{{leave.leaveDays}}</td>
+      <td>{{leave.reason}}</td>
       <td>
         <button class="dark_shade_gray" (click)="approveLeaveStatus(leave.id)"> Approve </button>
         <button class="light_blueGreen_shade" (click)="rejectLeaveStatus(leave.id)"> Reject </button>
