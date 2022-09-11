@@ -37,7 +37,10 @@ export class HomepageComponent implements OnInit {
       this.showManagerText = (this.employee.role == 'ADMIN') ? false : true;
 
       if (this.employee.id != 0) {
-        this.fetchEmployeeDataById(it.id);
+        setTimeout(() => {
+            this.fetchEmployeeDataById(it.id);
+          }, 100);
+
       }
     });
   }
@@ -52,7 +55,7 @@ export class HomepageComponent implements OnInit {
 
   fetchEmployeeDataById(id: number) {
     this.loading = true;
-    this, this.homepage_service.getEmployeeDetails(id).subscribe((response) => {
+    this.homepage_service.getEmployeeDetails(id).subscribe((response) => {
       this.employeeDetailsObj = response.leaveBalance;
     }, error => {
       console.log(error)
