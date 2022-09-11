@@ -56,6 +56,7 @@ export class AllLeaveComponent implements OnInit {
 
       this.pendingLeaves = response.content.filter(it => (it.status == 'PENDING'));
       this.totalNumberOfLeaves = response.totalCount;
+      console.log(response);
 
       this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
 
@@ -75,6 +76,7 @@ export class AllLeaveComponent implements OnInit {
 
       this.pendingLeaves = res.content.filter(it => (it.status == 'PENDING'));
       this.totalNumberOfLeaves = res.totalCount;
+      console.log(res);
 
       this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
 
