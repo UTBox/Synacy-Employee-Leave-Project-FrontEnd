@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ApplyLeaveComponent} from "./apply-leave.component";
 
 const routes: Routes = [
-  {path: 'leave/apply_leave', component: ApplyLeaveComponent}
+  {path: 'leave/apply_leave', component: ApplyLeaveComponent, title: 'Apply Leave'}
 ];
 
 @NgModule({
