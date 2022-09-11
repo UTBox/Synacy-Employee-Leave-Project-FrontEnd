@@ -20,8 +20,6 @@ export class AllEmployeesComponent implements OnInit {
   protected showPrevButton: boolean = false;
   protected showNextButton: boolean = true;
 
-  protected chosenEmployeeId: number;
-
 
   constructor(private allEmployeeService: AllEmployeesService, private router: Router) {
   }
@@ -29,6 +27,7 @@ export class AllEmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployeesData();
     console.log(this.employeeList);
+
 
   }
 
@@ -41,6 +40,10 @@ export class AllEmployeesComponent implements OnInit {
         console.log(response);
 
         this.numberOfPagesToDisplay = this.allEmployeeService.calculateNumberOfPages(this.totalNumberOfEmployee);
+
+        this.showNextButton = this.numberOfPagesToDisplay <= 1 ? false : true;
+
+        this.inspectPaginationForButtonAccess();
       }, (error) => {
         console.log(error);
       }
@@ -59,7 +62,6 @@ export class AllEmployeesComponent implements OnInit {
       this.paginationIndex++;
     }
     this.getEmployeesData()
-    this.inspectPaginationForButtonAccess();
     console.log(this.paginationIndex);
   }
 
@@ -68,17 +70,30 @@ export class AllEmployeesComponent implements OnInit {
       this.paginationIndex--;
     }
     this.getEmployeesData()
-    this.inspectPaginationForButtonAccess();
     console.log(this.paginationIndex);
   }
 
-  inspectPaginationForButtonAccess(): void {
-    if (this.paginationIndex <= 1) {
+  private inspectPaginationForButtonAccess(): void {
+    // if (this.paginationIndex <= 1) {
+    //   this.showPrevButton = false;
+    //   this.showNextButton = true;
+    // } else if (this.paginationIndex == this.numberOfPagesToDisplay) {
+    //   this.showPrevButton = true;
+    //   this.showNextButton = false;
+    // } else {
+    //   this.showPrevButton = true;
+    //   this.showNextButton = true;
+    // }
+    if (this.numberOfPagesToDisplay == 1) {
+      this.showPrevButton = false;
+      this.showNextButton = false;
+    } else if (this.paginationIndex <= 1 && this.numberOfPagesToDisplay > 1) {
       this.showPrevButton = false;
       this.showNextButton = true;
-    } else if (this.paginationIndex == this.numberOfPagesToDisplay) {
+    } else if (this.paginationIndex <= this.numberOfPagesToDisplay && this.numberOfPagesToDisplay > 1) {
       this.showPrevButton = true;
       this.showNextButton = false;
+
     } else {
       this.showPrevButton = true;
       this.showNextButton = true;

@@ -10,19 +10,24 @@ export class AllLeaveService {
 
   constructor(private http:HttpClient) { }
 
-  getLeaves() {
+  getLeaves(page: number) {
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
-    return this.http.get<any>(`http://localhost:8080/api/v1/leave`,{headers:headers});
+    return this.http.get<any>(`http://localhost:8080/api/v1/leave?page=${page}`,{headers:headers});
   }
 
-  getLeavesByManager(managerId:number):Observable<any> {
+  getLeavesByManager(page: number,managerId:number):Observable<any> {
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
-    return this.http.get<any>(`http://localhost:8080/api/v1/leave?managerId=${managerId}`,{headers:headers});
+    return this.http.get<any>(`http://localhost:8080/api/v1/leave?managerId=${managerId}&page=${page}`,{headers:headers});
   }
 
   updateLeaveStatus(leaveStatus:{status :string} ,leaveId : number) : Observable<any>{
     const headers = new HttpHeaders({'Content-Type':this.CONTENT_TYPE});
     return this.http.put(`http://localhost:8080/api/v1/leave/${leaveId}`,leaveStatus, {headers: headers});
+  }
+
+
+  public calculateNumberOfPages(numberOfLeaves: number): number {
+    return Math.ceil(numberOfLeaves / 10);
   }
 
 }
