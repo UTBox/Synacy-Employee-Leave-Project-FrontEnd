@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {SharedService} from "../shared.service";
+import {HomepageService} from "./homepage.service";
 
 @Component({
   selector: 'app-homepage',
@@ -14,43 +15,50 @@ export class HomepageComponent implements OnInit {
   getEmployeeRole: string;
   getManagerName: string;
 
-  showManagerText: boolean;
-  showRemainingLeave: boolean;
+  public employeeDetailsObj: any;
+  public loading;
+  public hasError;
+
+  showManagerText: boolean = false;
+  showRemainingLeave: boolean = false;
 
 
-  constructor(private shared_service: SharedService) {
+  constructor(private shared_service: SharedService, private homepage_service: HomepageService) {
+    this.subscription = this.shared_service.chosenEmployee.subscribe(it => {
+      this.employee = it;
 
-    this.subscription = this.shared_service.chosenEmployee
-      .subscribe(it => {
-        this.employee = it;
+      console.log(this.employee);
 
-        console.log(this.employee);
-
-        this.getEmployeeRole = this.employee.role;
-        if (this.employee.manager != null) {
-          this.getManagerName = this.employee.manager.name;
-        } else {
-          this.getManagerName = '';
-        }
+      this.getEmployeeRole = this.employee.role;
+      this.getManagerName = (this.employee.manager != null) ? this.employee.manager.name : '';
 
 
-        if (this.employee.role == 'EMPLOYEE' || this.employee.role == 'MANAGER') {
-          this.showManagerText = true;
-          this.showRemainingLeave = true;
-        } else {
-          this.showManagerText = false;
-          this.showRemainingLeave = false;
-        }
+      this.showRemainingLeave = (this.employee.role == 'ADMIN') ? false : true;
+      this.showManagerText = (this.employee.role == 'ADMIN') ? false : true;
 
-      });
-
-
+      if (this.employee.id != 0) {
+        this.fetchEmployeeDataById(it.id);
+      }
+    });
   }
 
   ngOnInit(): void {
+
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  fetchEmployeeDataById(id: number) {
+    this.loading = true;
+    this, this.homepage_service.getEmployeeDetails(id).subscribe((response) => {
+      this.employeeDetailsObj = response.leaveBalance;
+    }, error => {
+      console.log(error)
+    }).add(() => {
+      this.loading = false;
+    });
+
   }
 }
