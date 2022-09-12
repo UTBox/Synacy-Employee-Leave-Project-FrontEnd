@@ -22,7 +22,6 @@ export class AllLeaveComponent implements OnInit {
   protected showNextButton: boolean = true;
 
   protected paginationIndex: number = 1;
-  protected totalNumberOfLeaves: number;
   protected numberOfPagesToDisplay: number;
 
 
@@ -55,10 +54,8 @@ export class AllLeaveComponent implements OnInit {
       this.leaveList = response.content;
 
       this.pendingLeaves = response.content.filter(it => (it.status == 'PENDING'));
-      this.totalNumberOfLeaves = response.totalCount;
+      this.numberOfPagesToDisplay = response.totalCount;
       console.log(response);
-
-      this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
 
       this.showNextButton = this.numberOfPagesToDisplay <= 1 ? false : true;
       this.inspectPaginationForButtonAccess();
@@ -75,10 +72,8 @@ export class AllLeaveComponent implements OnInit {
       this.leaveList = res.content;
 
       this.pendingLeaves = res.content.filter(it => (it.status == 'PENDING'));
-      this.totalNumberOfLeaves = res.totalCount;
+      this.numberOfPagesToDisplay=res.totalCount;
       console.log(res);
-
-      this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
 
       this.showNextButton = this.numberOfPagesToDisplay <= 1 ? false : true;
       this.inspectPaginationForButtonAccess();
@@ -89,12 +84,6 @@ export class AllLeaveComponent implements OnInit {
     });
   }
 
-  filterLeaves() {
-    this.pendingLeaves = [...this.leaveList.filter(it => (it.status == 'PENDING'))];
-    this.totalNumberOfLeaves = this.pendingLeaves.size;
-    this.numberOfPagesToDisplay = this.allLeaveService.calculateNumberOfPages(this.totalNumberOfLeaves);
-    console.log('number of pages ' + this.numberOfPagesToDisplay);
-  }
 
   approveLeaveStatus(leaveId) {
     let leaveStatus: { status: string }
